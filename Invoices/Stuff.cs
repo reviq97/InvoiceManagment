@@ -10,6 +10,21 @@ namespace WSB_PO.Invoices
     {
         private string _id;
         private string _name;
+        private string _price;
+        private string _quantity;
+
+        public string Quantity
+        {
+            get { return _quantity; }
+            set { _quantity = value; }
+        }
+
+
+        public string Price
+        {
+            get { return _price; }
+            set { _price = value; }
+        }
 
         public string Name
         {

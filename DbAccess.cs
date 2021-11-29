@@ -59,7 +59,7 @@ namespace WSB_PO
                 }
             }
         }
-        public static DataTable GetInvoiceData(string q)
+        public static DataTable GetProducts(string query)
         {
             var invoiceData = new DataTable();
             using (var con = new SQLiteConnection(LoadConnectionString()))
@@ -67,9 +67,6 @@ namespace WSB_PO
                 try
                 {
                     con.Open();
-
-                    string query = q;
-
                     var adapter = new SQLiteDataAdapter(query,con);
                     adapter.Fill(invoiceData);
 
@@ -82,7 +79,6 @@ namespace WSB_PO
                 }
             }
         }
-
         public static DataTable GetProducts()
         {
             DataTable productsTable = new DataTable();

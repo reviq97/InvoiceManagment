@@ -95,5 +95,10 @@ namespace WSB_PO
         {
 
         }
+
+        private void cbx_Tax_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

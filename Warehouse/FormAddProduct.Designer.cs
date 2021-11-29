@@ -178,6 +178,7 @@ namespace WSB_PO
             this.cbx_Tax.Size = new System.Drawing.Size(85, 21);
             this.cbx_Tax.TabIndex = 21;
             this.cbx_Tax.Text = "23%";
+            this.cbx_Tax.SelectedIndexChanged += new System.EventHandler(this.cbx_Tax_SelectedIndexChanged);
             // 
             // btn_AddProductToDB
             // 

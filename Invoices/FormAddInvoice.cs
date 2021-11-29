@@ -62,15 +62,10 @@ namespace WSB_PO.Invoices
         {
 
         }
-
+        private int temp = 0;
         private void FormAddInvoice_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = DbAccess.GetInvoiceData(
-                        @"
-                    SELECT Id, Name, Quantity, Sold, Price, PriceWithTax 
-                    FROM Product
-                    ");
-            dataGridView1.ReadOnly = true;
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -96,6 +91,30 @@ namespace WSB_PO.Invoices
         {
             
 
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddProductInvoice(object sender, EventArgs e)
+        {
+            var addProd = new FormAddProd();
+            addProd.ShowDialog();
+
+            
+
+        }
+
+        private void DeleteProductInvoice(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 }

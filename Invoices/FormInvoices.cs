@@ -13,12 +13,13 @@ namespace WSB_PO
             InitializeComponent();
         }
 
-        private int temp = 0;
+        
         private void button1_Click(object sender, EventArgs e)
         {
-            temp++;
-            listBox1.Items.Add(temp);
-            listBox1.SelectedIndex = listBox1.Items.Count-1;
+            
+            var fainvoice = new FormAddInvoice();
+            fainvoice.Show();
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -42,13 +43,6 @@ namespace WSB_PO
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            var gen = new FormAddInvoice();
-            gen.Show();
         }
     }
 }
