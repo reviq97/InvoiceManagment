@@ -23,8 +23,8 @@
         #region Kod generowany przez Projektanta formularzy systemu Windows
 
         /// <summary>
-        /// Metoda wymagana do obsługi projektanta — nie należy modyfikować
-        /// jej zawartości w edytorze kodu.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -36,15 +36,15 @@
             this.labelExchange = new System.Windows.Forms.Label();
             this.pictureInvoices = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureWarehouse)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureExchange)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureInvoices)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureWarehouse)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureExchange)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureInvoices)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureWarehouse
             // 
-            this.pictureWarehouse.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureWarehouse.BackgroundImage")));
+            this.pictureWarehouse.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("pictureWarehouse.BackgroundImage")));
             this.pictureWarehouse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureWarehouse.Location = new System.Drawing.Point(178, 3);
             this.pictureWarehouse.Name = "pictureWarehouse";
@@ -55,7 +55,7 @@
             // 
             // pictureExchange
             // 
-            this.pictureExchange.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureExchange.BackgroundImage")));
+            this.pictureExchange.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("pictureExchange.BackgroundImage")));
             this.pictureExchange.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureExchange.Location = new System.Drawing.Point(353, 3);
             this.pictureExchange.Name = "pictureExchange";
@@ -67,7 +67,7 @@
             // labelInvoices
             // 
             this.labelInvoices.AutoSize = true;
-            this.labelInvoices.Font = new System.Drawing.Font("Bahnschrift SemiBold Condensed", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelInvoices.Font = new System.Drawing.Font("Bahnschrift SemiBold Condensed", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
             this.labelInvoices.Location = new System.Drawing.Point(37, 134);
             this.labelInvoices.Name = "labelInvoices";
             this.labelInvoices.Size = new System.Drawing.Size(59, 23);
@@ -77,7 +77,7 @@
             // labelWarehouse
             // 
             this.labelWarehouse.AutoSize = true;
-            this.labelWarehouse.Font = new System.Drawing.Font("Bahnschrift SemiBold Condensed", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelWarehouse.Font = new System.Drawing.Font("Bahnschrift SemiBold Condensed", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
             this.labelWarehouse.Location = new System.Drawing.Point(214, 134);
             this.labelWarehouse.Name = "labelWarehouse";
             this.labelWarehouse.Size = new System.Drawing.Size(67, 23);
@@ -87,7 +87,7 @@
             // labelExchange
             // 
             this.labelExchange.AutoSize = true;
-            this.labelExchange.Font = new System.Drawing.Font("Bahnschrift SemiBold Condensed", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelExchange.Font = new System.Drawing.Font("Bahnschrift SemiBold Condensed", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
             this.labelExchange.Location = new System.Drawing.Point(353, 134);
             this.labelExchange.Name = "labelExchange";
             this.labelExchange.Size = new System.Drawing.Size(134, 23);
@@ -96,7 +96,7 @@
             // 
             // pictureInvoices
             // 
-            this.pictureInvoices.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureInvoices.BackgroundImage")));
+            this.pictureInvoices.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("pictureInvoices.BackgroundImage")));
             this.pictureInvoices.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureInvoices.Location = new System.Drawing.Point(3, 3);
             this.pictureInvoices.Name = "pictureInvoices";
@@ -126,14 +126,14 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inwentaryzacja + Faktury 2021 | MNM-Dev";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureWarehouse)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureExchange)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureInvoices)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureWarehouse)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureExchange)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureInvoices)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
-
         }
 
         #endregion

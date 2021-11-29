@@ -19,12 +19,16 @@ namespace WSB_PO
 
         private void pictureInvoices_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Kliknięto Faktury", "Faktury");
+            FormInvoices fi = new FormInvoices();
+            this.Hide();
+            fi.ShowDialog();
         }
 
         private void pictureWarehouse_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Kliknięto Magazyn", "Magazyn");
+            this.Hide();
+            FormStorage fs = new FormStorage();
+            fs.ShowDialog();
         }
 
         private void pictureExchange_Click(object sender, EventArgs e)
