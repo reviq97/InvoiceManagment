@@ -101,6 +101,7 @@ namespace WSB_PO
             this.dgv_Products.Location = new System.Drawing.Point(0, 0);
             this.dgv_Products.Name = "dgv_Products";
             this.dgv_Products.ReadOnly = true;
+            this.dgv_Products.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_Products.Size = new System.Drawing.Size(1262, 649);
             this.dgv_Products.TabIndex = 0;
             this.dgv_Products.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Products_CellContentClick);

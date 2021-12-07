@@ -155,6 +155,7 @@ namespace WSB_PO
             this.mtb_Brutto.Size = new System.Drawing.Size(85, 20);
             this.mtb_Brutto.TabIndex = 19;
             this.mtb_Brutto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.mtb_Brutto.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mtb_Brutto_MaskInputRejected);
             this.mtb_Brutto.Leave += new System.EventHandler(this.mtb_Brutto_Leave);
             // 
             // mtb_EAN
@@ -164,6 +165,7 @@ namespace WSB_PO
             this.mtb_EAN.Name = "mtb_EAN";
             this.mtb_EAN.Size = new System.Drawing.Size(85, 20);
             this.mtb_EAN.TabIndex = 20;
+            this.mtb_EAN.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mtb_EAN_MaskInputRejected);
             // 
             // cbx_Tax
             // 
@@ -213,6 +215,7 @@ namespace WSB_PO
             this.Name = "FormAddProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodawanie produktu";
+            this.Load += new System.EventHandler(this.FormAddProduct_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

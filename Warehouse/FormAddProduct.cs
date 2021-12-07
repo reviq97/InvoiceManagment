@@ -100,5 +100,20 @@ namespace WSB_PO
         {
 
         }
+
+        private void mtb_EAN_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void FormAddProduct_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mtb_Brutto_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
     }
 }

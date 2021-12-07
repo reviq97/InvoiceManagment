@@ -17,9 +17,10 @@ namespace WSB_PO
         private void button1_Click(object sender, EventArgs e)
         {
             
-            var fainvoice = new FormAddInvoice();
-            fainvoice.Show();
+            var fainvoice = new FormInvoice();
             this.Close();
+            fainvoice.Show();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
