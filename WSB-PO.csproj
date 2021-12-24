@@ -89,7 +89,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataBaseConnection.cs" />
     <Compile Include="DbAccess.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -105,14 +104,14 @@
     <Compile Include="Invoices\FormAddProd.Designer.cs">
       <DependentUpon>FormAddProd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Invoices\FormInvoice.cs">
+    <Compile Include="Invoices\FormAddInvoice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Invoices\FormInvoice.Designer.cs">
-      <DependentUpon>FormInvoice.cs</DependentUpon>
+    <Compile Include="Invoices\FormAddInvoice.Designer.cs">
+      <DependentUpon>FormAddInvoice.cs</DependentUpon>
     </Compile>
-    <Compile Include="Invoices\Models\Invoices.cs" />
-    <Compile Include="Invoices\Models\Products.cs" />
+    <Compile Include="Invoices\Models\Invoice.cs" />
+    <Compile Include="Invoices\Models\Product.cs" />
     <Compile Include="Warehouse\FormAddProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,8 +138,8 @@
     <EmbeddedResource Include="Invoices\FormAddProd.resx">
       <DependentUpon>FormAddProd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Invoices\FormInvoice.resx">
-      <DependentUpon>FormInvoice.cs</DependentUpon>
+    <EmbeddedResource Include="Invoices\FormAddInvoice.resx">
+      <DependentUpon>FormAddInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\FormAddProduct.resx">
       <DependentUpon>FormAddProduct.cs</DependentUpon>

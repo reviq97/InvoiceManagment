@@ -14,37 +14,34 @@ namespace WSB_PO.Invoices
 {
     public partial class FormAddProd : Form
     {
-        Products prod;
+        private Products _prod;
+
+        public Products prod
+        {
+            get { return _prod; }
+            private set { _prod = value; }
+        }
+
         public FormAddProd()
         {
             InitializeComponent();
         }
-
-        private void label1_Click(object sender, EventArgs e)
+        private void textBox5_Click(object sender, EventArgs e)
         {
+            double price, tax, quantity, brutto;
 
+            price = double.Parse(textBoxPrice.Text, CultureInfo.GetCultureInfo("en-EN"));
+            quantity = double.Parse(comboBox2.Text, CultureInfo.GetCultureInfo("en-EN"));
+            tax = double.Parse(cbx_Tax.Text.Remove(cbx_Tax.Text.Length - 1), CultureInfo.GetCultureInfo("pl-PL"));
+            string description = textBoxDesc.Text;
+
+            brutto = ((price * quantity) * (1 + (tax / 100))) / 100;
+            textBox5.Text = brutto.ToString("F2");
+
+            prod = new Products(quantity.ToString(), brutto.ToString()
+                , cbx_Tax.Text.ToString(), comboBox1.Text, description, textBoxPrice.Text.ToString());
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbx_Tax_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        
         private List<Products> ConvertDataTableToList()
         {
             List<Products> stuf = new List<Products>();
@@ -64,9 +61,9 @@ namespace WSB_PO.Invoices
 
         private void FormAddProd_Load(object sender, EventArgs e)
         {
-
+            DbAccess db = new DbAccess();
             
-            dataGridView1.DataSource = DbAccess.GetProducts("SELECT Name, Quantity, Price " +
+            dataGridView1.DataSource = db.QueryToProducts("SELECT Name, Quantity, Price " +
                 "FROM Product");
             dataGridView1.ReadOnly = true;
             textBoxPrice.ReadOnly = true;
@@ -81,21 +78,7 @@ namespace WSB_PO.Invoices
 
         }
 
-        private void textBox5_Click(object sender, EventArgs e)
-        {
-            double price, tax, quantity, brutto;
-
-            price = double.Parse(textBoxPrice.Text, CultureInfo.GetCultureInfo("en-EN"));
-            quantity = double.Parse(comboBox2.Text, CultureInfo.GetCultureInfo("en-EN"));
-            tax = double.Parse(cbx_Tax.Text.Remove(cbx_Tax.Text.Length - 1), CultureInfo.GetCultureInfo("pl-PL"));
-            string description = textBoxDesc.Text;
-
-            brutto = ((price * quantity) * (1 + (tax / 100)))/100;
-            textBox5.Text = brutto.ToString("F2");
-
-            prod = new Products(quantity.ToString(), brutto.ToString()
-                , cbx_Tax.Text.ToString(),comboBox1.Text, description, textBoxPrice.Text.ToString() );
-        }
+        
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -113,23 +96,6 @@ namespace WSB_PO.Invoices
             }
 
         }
-
-        private void comboBox1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
-
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void comboBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -137,22 +103,8 @@ namespace WSB_PO.Invoices
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var form = new FormInvoice(ref prod);
-            form.Show();
             this.Close();
-           
         }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex>=0)

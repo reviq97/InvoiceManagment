@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WSB_PO.Invoices
 {
-    public class Products
+    public partial class Products
     {
         private string _name;  
         private string _check;              

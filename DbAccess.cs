@@ -11,16 +11,17 @@ using System.Windows.Forms;
 
 namespace WSB_PO
     {
-        public class DbAccess
+        public class DbAccess : IDbAccess
         {
-            public static string LoadConnectionString(string id = "Default")
+            public string LoadConnectionString(string id = "Default")
             {
                 return ConfigurationManager.ConnectionStrings[id].ConnectionString;
             }
 
             public static string TestDatabase()
             {
-                using (var con = new SQLiteConnection(LoadConnectionString()))
+                DbAccess db = new DbAccess();
+                using (var con = new SQLiteConnection(db.LoadConnectionString()))
                 {
                     try
                     {
@@ -33,37 +34,7 @@ namespace WSB_PO
                     }
                 }
             }
-
-            public static DataTable table = new DataTable();
-
-            public static DataTable TestDataGridView()
-            {
-                using (var con = new SQLiteConnection(LoadConnectionString()))
-                {
-                    try
-                    {
-                        con.Open();
-
-                        string query =
-                        @"
-                    SELECT *
-                    FROM Product
-                    ";
-
-                        var adapter = new SQLiteDataAdapter(query, con);
-                        adapter.Fill(table);
-                        adapter.Dispose();
-
-                        return table;
-                    }
-                    catch (Exception e)
-                    {
-                        MessageBox.Show("Nie można połączyć się z bazą.", "Błąd");
-                        return new DataTable();
-                    }
-                }
-            }
-            public static DataTable GetProducts(string query)
+            public DataTable QueryToProducts(string query)
             {
                 var invoiceData = new DataTable();
                 using (var con = new SQLiteConnection(LoadConnectionString()))
@@ -86,7 +57,8 @@ namespace WSB_PO
             public static DataTable GetProducts()
             {
                 DataTable productsTable = new DataTable();
-                using (var con = new SQLiteConnection(LoadConnectionString()))
+                DbAccess db = new DbAccess();
+                using (var con = new SQLiteConnection(db.LoadConnectionString()))
                 {
                     try
                     {
@@ -115,8 +87,8 @@ namespace WSB_PO
             {
                 var polishCulture = new CultureInfo("pl-PL");
                 string presentTime = DateTime.Now.ToString(polishCulture);
-
-                using (var con = new SQLiteConnection(LoadConnectionString()))
+                DbAccess db = new DbAccess();
+                using (var con = new SQLiteConnection(db.LoadConnectionString()))
                 {
                     try
                     {
@@ -149,7 +121,8 @@ namespace WSB_PO
 
             public static void RemoveProduct(int id)
             {
-                using (var con = new SQLiteConnection(LoadConnectionString()))
+                DbAccess db = new DbAccess();
+                using (var con = new SQLiteConnection(db.LoadConnectionString()))
                 {
                     try
                     {

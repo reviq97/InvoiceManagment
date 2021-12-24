@@ -56,7 +56,6 @@ namespace WSB_PO.Invoices
             this.dataGridView1.Size = new System.Drawing.Size(491, 260);
             this.dataGridView1.TabIndex = 41;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label1
             // 
@@ -66,7 +65,6 @@ namespace WSB_PO.Invoices
             this.label1.Size = new System.Drawing.Size(75, 13);
             this.label1.TabIndex = 45;
             this.label1.Text = "Nazwa towaru";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -85,7 +83,6 @@ namespace WSB_PO.Invoices
             this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 47;
             this.label3.Text = "Cena";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -95,7 +92,6 @@ namespace WSB_PO.Invoices
             this.label4.Size = new System.Drawing.Size(67, 13);
             this.label4.TabIndex = 49;
             this.label4.Text = "Stawka VAT";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // cbx_Tax
             // 
@@ -110,7 +106,6 @@ namespace WSB_PO.Invoices
             this.cbx_Tax.Name = "cbx_Tax";
             this.cbx_Tax.Size = new System.Drawing.Size(85, 21);
             this.cbx_Tax.TabIndex = 50;
-            this.cbx_Tax.SelectedIndexChanged += new System.EventHandler(this.cbx_Tax_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -144,7 +139,6 @@ namespace WSB_PO.Invoices
             this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 53;
             this.textBox5.Click += new System.EventHandler(this.textBox5_Click);
-            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // button1
             // 
@@ -175,7 +169,6 @@ namespace WSB_PO.Invoices
             this.comboBox1.Size = new System.Drawing.Size(135, 21);
             this.comboBox1.TabIndex = 57;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            this.comboBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox1_KeyPress);
             // 
             // textBoxPrice
             // 
@@ -192,8 +185,6 @@ namespace WSB_PO.Invoices
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(75, 21);
             this.comboBox2.TabIndex = 58;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
-            this.comboBox2.Click += new System.EventHandler(this.comboBox2_Click);
             // 
             // FormAddProd
             // 

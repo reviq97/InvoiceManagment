@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WSB_PO.Invoices
 {
-    class Recipient
+    public partial class Recipient
     {
         private static int _id = 0;
         private string _name;

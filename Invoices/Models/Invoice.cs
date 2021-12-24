@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace WSB_PO.Invoices
 {
-    class Invoices
+    public partial class Invoice
     {
-        private int _invoiceId;
+        private string _invoiceId;
 
-        public int InvoiceId
+        public string InvoiceId
         {
             get { return _invoiceId; }
             private set { _invoiceId = value; }
@@ -30,27 +30,27 @@ namespace WSB_PO.Invoices
         }
         private List<Products> _stuff;
 
-        public List<Products> _Stuff
+        public List<Products> Stuff
         {
             get { return _stuff; }
             private set { _stuff = value; }
         }
-        private List<Recipient> _recipients;
+        private Recipient _recipient;
 
-        public List<Recipient> Recipient
+        public Recipient Recipient
         {
-            get { return _recipients; }
-            set { _recipients = value; }
+            get { return _recipient; }
+            set { _recipient = value; }
         }
 
 
-        public Invoices(int invoiceId, int recipientId, DateTime dateTime, List<Products> stuff, List<Recipient> recipients)
+        public Invoice(string invoiceId, int recipientId, DateTime dateTime, List<Products> stuff, Recipient recipient)
         {
             InvoiceId = invoiceId;
             RecipientId = recipientId;
             Date = dateTime;
-            _Stuff = stuff;
-            Recipient = _recipients;
+            Stuff = stuff;
+            Recipient = recipient;
         }
 
     }

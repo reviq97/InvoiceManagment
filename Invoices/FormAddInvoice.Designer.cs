@@ -1,7 +1,7 @@
 ﻿
 namespace WSB_PO.Invoices
 {
-    partial class FormInvoice
+    partial class FormAddInvoice
     {
         /// <summary>
         /// Required designer variable.
@@ -45,7 +45,7 @@ namespace WSB_PO.Invoices
             this.button1 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
+            this.invoiceApply = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -58,6 +58,17 @@ namespace WSB_PO.Invoices
             this.invoiceNip = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.invoiceLoc = new System.Windows.Forms.TextBox();
+            this.invoiceMail = new System.Windows.Forms.TextBox();
+            this.invoiceTel = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.invoicePersonal = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.invoiceCat = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.invoiceOff = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,17 +76,6 @@ namespace WSB_PO.Invoices
             this.checkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.describeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -88,7 +88,6 @@ namespace WSB_PO.Invoices
             this.FVNumber.Size = new System.Drawing.Size(78, 23);
             this.FVNumber.TabIndex = 11;
             this.FVNumber.Text = "Faktura NR: ";
-            this.FVNumber.Click += new System.EventHandler(this.label1_Click);
             // 
             // invoiceNumber
             // 
@@ -134,7 +133,6 @@ namespace WSB_PO.Invoices
             this.label6.TabIndex = 17;
             this.label6.Text = "_________________________________________________________________________________" +
     "_________";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // dataGridView1
             // 
@@ -155,8 +153,6 @@ namespace WSB_PO.Invoices
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(633, 185);
             this.dataGridView1.TabIndex = 40;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dataGridView1.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridView1_UserDeletingRow);
             // 
             // button3
             // 
@@ -218,7 +214,6 @@ namespace WSB_PO.Invoices
             this.label13.TabIndex = 50;
             this.label13.Text = "_________________________________________________________________________________" +
     "_________";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // label14
             // 
@@ -229,15 +224,15 @@ namespace WSB_PO.Invoices
             this.label14.TabIndex = 51;
             this.label14.Text = "Towary do faktury:";
             // 
-            // button4
+            // invoiceApply
             // 
-            this.button4.Location = new System.Drawing.Point(14, 791);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 52;
-            this.button4.Text = "Zatwierdź";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.invoiceApply.Location = new System.Drawing.Point(14, 791);
+            this.invoiceApply.Name = "invoiceApply";
+            this.invoiceApply.Size = new System.Drawing.Size(75, 23);
+            this.invoiceApply.TabIndex = 52;
+            this.invoiceApply.Text = "Zatwierdź";
+            this.invoiceApply.UseVisualStyleBackColor = true;
+            this.invoiceApply.Click += new System.EventHandler(this.invoiceApply_Click);
             // 
             // button5
             // 
@@ -256,7 +251,6 @@ namespace WSB_PO.Invoices
             this.label7.Size = new System.Drawing.Size(100, 23);
             this.label7.TabIndex = 29;
             this.label7.Text = "Działalność:";
-            this.label7.Click += new System.EventHandler(this.label7_Click_2);
             // 
             // label12
             // 
@@ -273,7 +267,6 @@ namespace WSB_PO.Invoices
             this.invoiceCompany.Name = "invoiceCompany";
             this.invoiceCompany.Size = new System.Drawing.Size(100, 20);
             this.invoiceCompany.TabIndex = 31;
-            this.invoiceCompany.TextChanged += new System.EventHandler(this.invoiceCompany_TextChanged);
             // 
             // label11
             // 
@@ -339,6 +332,96 @@ namespace WSB_PO.Invoices
             this.invoiceLoc.Size = new System.Drawing.Size(100, 20);
             this.invoiceLoc.TabIndex = 39;
             // 
+            // invoiceMail
+            // 
+            this.invoiceMail.Location = new System.Drawing.Point(147, 394);
+            this.invoiceMail.Name = "invoiceMail";
+            this.invoiceMail.Size = new System.Drawing.Size(100, 20);
+            this.invoiceMail.TabIndex = 61;
+            // 
+            // invoiceTel
+            // 
+            this.invoiceTel.Location = new System.Drawing.Point(147, 371);
+            this.invoiceTel.Name = "invoiceTel";
+            this.invoiceTel.Size = new System.Drawing.Size(100, 20);
+            this.invoiceTel.TabIndex = 60;
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.Location = new System.Drawing.Point(12, 397);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 26);
+            this.label4.TabIndex = 58;
+            this.label4.Text = "Email: ";
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label5.Location = new System.Drawing.Point(12, 371);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(100, 26);
+            this.label5.TabIndex = 57;
+            this.label5.Text = "Telefon: ";
+            // 
+            // invoicePersonal
+            // 
+            this.invoicePersonal.Location = new System.Drawing.Point(147, 348);
+            this.invoicePersonal.Name = "invoicePersonal";
+            this.invoicePersonal.Size = new System.Drawing.Size(100, 20);
+            this.invoicePersonal.TabIndex = 56;
+            // 
+            // label15
+            // 
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label15.Location = new System.Drawing.Point(12, 348);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(100, 26);
+            this.label15.TabIndex = 55;
+            this.label15.Text = "Imie i Nazwisko:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 304);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(547, 13);
+            this.label1.TabIndex = 65;
+            this.label1.Text = "_________________________________________________________________________________" +
+    "_________";
+            // 
+            // invoiceCat
+            // 
+            this.invoiceCat.Location = new System.Drawing.Point(147, 420);
+            this.invoiceCat.Name = "invoiceCat";
+            this.invoiceCat.Size = new System.Drawing.Size(100, 20);
+            this.invoiceCat.TabIndex = 67;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(12, 420);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 26);
+            this.label2.TabIndex = 66;
+            this.label2.Text = "Kategoria:";
+            // 
+            // invoiceOff
+            // 
+            this.invoiceOff.Location = new System.Drawing.Point(147, 446);
+            this.invoiceOff.Name = "invoiceOff";
+            this.invoiceOff.Size = new System.Drawing.Size(100, 20);
+            this.invoiceOff.TabIndex = 69;
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(12, 446);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(100, 26);
+            this.label3.TabIndex = 68;
+            this.label3.Text = "Obniżka:";
+            // 
             // productDataGridViewTextBoxColumn
             // 
             this.productDataGridViewTextBoxColumn.DataPropertyName = "Product";
@@ -385,116 +468,24 @@ namespace WSB_PO.Invoices
             // 
             this.productsBindingSource.DataSource = typeof(WSB_PO.Invoices.Products);
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(147, 394);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 61;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(147, 371);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 60;
-            // 
-            // label4
-            // 
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(12, 397);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 26);
-            this.label4.TabIndex = 58;
-            this.label4.Text = "Email: ";
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(12, 371);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 26);
-            this.label5.TabIndex = 57;
-            this.label5.Text = "Telefon: ";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(147, 348);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 56;
-            // 
-            // label15
-            // 
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label15.Location = new System.Drawing.Point(12, 348);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(100, 26);
-            this.label15.TabIndex = 55;
-            this.label15.Text = "Imie i Nazwisko:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 304);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(547, 13);
-            this.label1.TabIndex = 65;
-            this.label1.Text = "_________________________________________________________________________________" +
-    "_________";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(147, 420);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 67;
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(12, 420);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 26);
-            this.label2.TabIndex = 66;
-            this.label2.Text = "Kategoria:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(147, 446);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 69;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(12, 446);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 26);
-            this.label3.TabIndex = 68;
-            this.label3.Text = "Obniżka:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // FormInvoice
+            // FormAddInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(662, 867);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.invoiceOff);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.invoiceCat);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.invoiceMail);
+            this.Controls.Add(this.invoiceTel);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.invoicePersonal);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.invoiceApply);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.button2);
@@ -521,9 +512,7 @@ namespace WSB_PO.Invoices
             this.Controls.Add(this.DateProd);
             this.Controls.Add(this.invoiceNumber);
             this.Controls.Add(this.FVNumber);
-            this.Name = "FormInvoice";
-            this.Text = "AddInvoice";
-            this.Load += new System.EventHandler(this.FormAddInvoice_Load);
+            this.Name = "FormAddInvoice";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -555,7 +544,7 @@ namespace WSB_PO.Invoices
         private System.Windows.Forms.DataGridViewTextBoxColumn checkDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn describeDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource productsBindingSource;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button invoiceApply;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label12;
@@ -568,16 +557,16 @@ namespace WSB_PO.Invoices
         private System.Windows.Forms.TextBox invoiceNip;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox invoiceLoc;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox invoiceMail;
+        private System.Windows.Forms.TextBox invoiceTel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox invoicePersonal;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox invoiceCat;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox invoiceOff;
         private System.Windows.Forms.Label label3;
     }
 }
