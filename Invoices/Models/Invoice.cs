@@ -28,9 +28,9 @@ namespace WSB_PO.Invoices
             get { return dateTime; }
             private set { dateTime = value; }
         }
-        private List<Products> _stuff;
+        private List<Product> _stuff;
 
-        public List<Products> Stuff
+        public List<Product> Stuff
         {
             get { return _stuff; }
             private set { _stuff = value; }
@@ -40,11 +40,14 @@ namespace WSB_PO.Invoices
         public Recipient Recipient
         {
             get { return _recipient; }
-            set { _recipient = value; }
+            private set { _recipient = value; }
         }
 
+        public Invoice()
+        {
 
-        public Invoice(string invoiceId, int recipientId, DateTime dateTime, List<Products> stuff, Recipient recipient)
+        }
+        public Invoice(string invoiceId, int recipientId, DateTime dateTime, List<Product> stuff, Recipient recipient)
         {
             InvoiceId = invoiceId;
             RecipientId = recipientId;

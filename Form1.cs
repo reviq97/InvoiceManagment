@@ -19,9 +19,12 @@ namespace WSB_PO
 
         private void pictureInvoices_Click(object sender, EventArgs e)
         {
-            FormInvoices fi = new FormInvoices();
-            this.Hide();
-            fi.ShowDialog();
+            using (FormInvoices fi = new FormInvoices())
+            {
+                this.Hide();
+                fi.ShowDialog();
+            }
+
         }
 
         private void pictureWarehouse_Click(object sender, EventArgs e)

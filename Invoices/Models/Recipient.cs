@@ -8,9 +8,7 @@ namespace WSB_PO.Invoices
 {
     public partial class Recipient
     {
-        private static int _id = 0;
         private string _name;
-        private string _company;
         private string _adress;
         private string _city;
         private string _postcode;
@@ -20,13 +18,10 @@ namespace WSB_PO.Invoices
         private string _email;
         private string _category;
 
-        public Recipient(string company, string name, string adress, 
+        public Recipient( string name, string adress, 
                             string city, string postcode, int discount, string nip, 
                                 string phone, string email, string category)
         {
-            ++_id;
-            Id = _id;
-            Company = _company;
             RName = name;
             Adress = adress;
             City = city;
@@ -48,72 +43,64 @@ namespace WSB_PO.Invoices
         {
 
         }
-        public string Company
-        {
-            get { return _company; }
-            set { _company = value; }
-        }
         public string Category
         {
             get { return _category; }
-            set { _category = value; }
+            private set { _category = value; }
         }
 
         public string Email
         {
             get { return _email; }
-            set { _email = value; }
+            private set { _email = value; }
         }
 
         public string Phone
         {
             get { return _phone; }
-            set { _phone = value; }
+            private set { _phone = value; }
         }
 
 
         public string Nip
         {
             get { return _nip; }
-            set { _nip = value; }
+            private set { _nip = value; }
         }
 
         public int Discount
         {
             get { return _discount; }
-            set { _discount = value; }
+            private set { _discount = value; }
         }
 
         public string Postcode
         {
             get { return _postcode; }
-            set { _postcode = value; }
+            private set { _postcode = value; }
         }
 
         public string City
         {
             get { return _city; }
-            set { _city = value; }
+            private set { _city = value; }
         }
 
         public string Adress
         {
             get { return _adress; }
-            set { _adress = value; }
+            private set { _adress = value; }
         }
 
         public string RName
         {
             get { return _name; }
-            set { _name = value; }
+            private set { _name = value; }
         }
-
-        public int Id
+        public override int GetHashCode()
         {
-            get { return _id; }
-            set { _id = value; }
+            //phone * nip * postcode
+            return _phone.GetHashCode() * _nip.GetHashCode() * _postcode.GetHashCode();
         }
-        
-
     }
 }

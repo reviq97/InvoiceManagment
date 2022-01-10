@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace WSB_PO.Invoices
 {
     partial class FormAddInvoice
@@ -37,6 +39,7 @@ namespace WSB_PO.Invoices
             this.Location = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button3 = new System.Windows.Forms.Button();
             this.invoiceLocation = new System.Windows.Forms.TextBox();
             this.invoiceSaleDate = new System.Windows.Forms.TextBox();
@@ -69,13 +72,12 @@ namespace WSB_PO.Invoices
             this.label2 = new System.Windows.Forms.Label();
             this.invoiceOff = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.taxDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.checkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.describeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -140,19 +142,23 @@ namespace WSB_PO.Invoices
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.productDataGridViewTextBoxColumn,
+            this.ProdName,
             this.priceDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn,
             this.taxDataGridViewTextBoxColumn,
             this.checkDataGridViewTextBoxColumn,
             this.describeDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.productsBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 557);
+            this.dataGridView1.Location = new System.Drawing.Point(14, 557);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(633, 185);
             this.dataGridView1.TabIndex = 40;
+            // 
+            // productsBindingSource
+            // 
+            this.productsBindingSource.DataSource = typeof(WSB_PO.Invoices.Product);
             // 
             // button3
             // 
@@ -422,12 +428,12 @@ namespace WSB_PO.Invoices
             this.label3.TabIndex = 68;
             this.label3.Text = "Obniżka:";
             // 
-            // productDataGridViewTextBoxColumn
+            // ProdName
             // 
-            this.productDataGridViewTextBoxColumn.DataPropertyName = "Product";
-            this.productDataGridViewTextBoxColumn.HeaderText = "Nazwa";
-            this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
-            this.productDataGridViewTextBoxColumn.ReadOnly = true;
+            this.ProdName.DataPropertyName = "ProdName";
+            this.ProdName.HeaderText = "Nazwa";
+            this.ProdName.Name = "ProdName";
+            this.ProdName.ReadOnly = true;
             // 
             // priceDataGridViewTextBoxColumn
             // 
@@ -463,10 +469,6 @@ namespace WSB_PO.Invoices
             this.describeDataGridViewTextBoxColumn.HeaderText = "Uwagi";
             this.describeDataGridViewTextBoxColumn.Name = "describeDataGridViewTextBoxColumn";
             this.describeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // productsBindingSource
-            // 
-            this.productsBindingSource.DataSource = typeof(WSB_PO.Invoices.Products);
             // 
             // FormAddInvoice
             // 
@@ -538,11 +540,6 @@ namespace WSB_PO.Invoices
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridViewTextBoxColumn Names;
         private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn taxDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn checkDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn describeDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource productsBindingSource;
         private System.Windows.Forms.Button invoiceApply;
         private System.Windows.Forms.Button button5;
@@ -568,5 +565,11 @@ namespace WSB_PO.Invoices
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox invoiceOff;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProdName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn taxDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn checkDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn describeDataGridViewTextBoxColumn;
     }
 }

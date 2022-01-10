@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WSB_PO.Invoices
 {
-    public partial class Products
+    public partial class Product
     {
         private string _name;  
         private string _check;              
@@ -17,15 +17,15 @@ namespace WSB_PO.Invoices
         private string _price;
         
 
-        public Products()
+        public Product()
         {
 
         }
-        public Products(string quantity, string check, string tax, string names, string desc, string price)
+        public Product(string quantity, string check, string tax, string name, string desc, string price)
         {
             Quantity = quantity;
             Check = check;
-            Product = names;
+            ProdName = name;
             Describe = desc;
             Price = price;
             Tax = tax;
@@ -33,38 +33,37 @@ namespace WSB_PO.Invoices
         public string Price
         {
             get { return _price; }
-            set { _price = value; }
+            private set { _price = value; }
         }
 
         public string Describe
         {
             get { return _describe; }
-            set { _describe = value; }
+            private set { _describe = value; }
         }
 
         public string Tax
         {
             get { return _tax; }
-            set { _tax = value; }
+            private set { _tax = value; }
         }
 
         public string Quantity
         {
             get { return _quantity; }
-            set { _quantity = value; }
+             set { _quantity = value; }
         }
-
 
         public string Check
         {
             get { return _check; }
-            set { _check = value; }
+             set { _check = value; }
         }
 
-        public string Product
+        public string ProdName
         {
             get { return _name; }
-            set { _name = value; }
+             set { _name = value; }
         }
     }
 }

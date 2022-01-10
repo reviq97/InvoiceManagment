@@ -72,6 +72,7 @@ namespace WSB_PO
         {
             try
             {
+                var db = new DbAccess();
                 string name = tbx_Name.Text;
                 string priceNumsOnly = Regex.Replace(mtb_Netto.Text, "[^0-9.]", "");
                 string priceToDoublify = priceNumsOnly.Insert(priceNumsOnly.Length - 2, ",");
@@ -80,7 +81,7 @@ namespace WSB_PO
                 int quantity = Int32.Parse(tbx_Quantity.Text);
                 string ean = mtb_EAN.Text;
                 string unit = tbx_Unit.Text;
-                DbAccess.AddProduct(name, price, tax, quantity, ean, unit);
+                db.InsertQuery(name, price, tax, quantity, ean, unit);
                 this.Dispose();
 
             }

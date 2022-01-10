@@ -14,13 +14,18 @@ namespace WSB_PO.Invoices
 {
     public partial class FormAddProd : Form
     {
-        private Products _prod;
+        private Product _prod;
 
-        public Products prod
+        public Product prod
         {
-            get { return _prod; }
+            get
+            {
+                return _prod;
+            }
+
             private set { _prod = value; }
         }
+       
 
         public FormAddProd()
         {
@@ -29,29 +34,38 @@ namespace WSB_PO.Invoices
         private void textBox5_Click(object sender, EventArgs e)
         {
             double price, tax, quantity, brutto;
+            textBox5.ReadOnly = true;
+            try
+            {
+                price = double.Parse(textBoxPrice.Text, CultureInfo.GetCultureInfo("en-EN"));
+                quantity = double.Parse(comboBox2.Text, CultureInfo.GetCultureInfo("en-EN"));
+                tax = double.Parse(cbx_Tax.Text.Remove(cbx_Tax.Text.Length - 1), CultureInfo.GetCultureInfo("pl-PL"));
+                string description = textBoxDesc.Text;
 
-            price = double.Parse(textBoxPrice.Text, CultureInfo.GetCultureInfo("en-EN"));
-            quantity = double.Parse(comboBox2.Text, CultureInfo.GetCultureInfo("en-EN"));
-            tax = double.Parse(cbx_Tax.Text.Remove(cbx_Tax.Text.Length - 1), CultureInfo.GetCultureInfo("pl-PL"));
-            string description = textBoxDesc.Text;
+                brutto = ((price * quantity) * (1 + (tax / 100))) / 100;
+                textBox5.Text = brutto.ToString("F2");
 
-            brutto = ((price * quantity) * (1 + (tax / 100))) / 100;
-            textBox5.Text = brutto.ToString("F2");
-
-            prod = new Products(quantity.ToString(), brutto.ToString()
-                , cbx_Tax.Text.ToString(), comboBox1.Text, description, textBoxPrice.Text.ToString());
+                prod = new Product(quantity.ToString(), brutto.ToString()
+                    , cbx_Tax.Text.ToString(), comboBox1.Text, description, textBoxPrice.Text.ToString());
+            }
+            catch (Exception msg)
+            {
+                MessageBox.Show(msg.Message);
+            }
+            
         }
 
-        private List<Products> ConvertDataTableToList()
+        private List<Product> ConvertDataTableToList()
         {
-            List<Products> stuf = new List<Products>();
+            DbAccess db = new DbAccess();
+            List<Product> stuf = new List<Product>();
             DataTable data = new DataTable();
-            data = DbAccess.GetProducts();
+            data = db.GetProducts();
 
             for (int i = 0; i < data.Rows.Count; i++)
             {
-                Products tmp = new Products();
-                tmp.Product = data.Rows[i]["Name"].ToString();
+                Product tmp = new Product();
+                tmp.ProdName = data.Rows[i]["Name"].ToString();
                 tmp.Check= data.Rows[i]["Price"].ToString();
                 tmp.Quantity = data.Rows[i]["Quantity"].ToString();
                 stuf.Add(tmp);
@@ -63,17 +77,17 @@ namespace WSB_PO.Invoices
         {
             DbAccess db = new DbAccess();
             
-            dataGridView1.DataSource = db.QueryToProducts("SELECT Name, Quantity, Price " +
+            dataGridView1.DataSource = db.Query("SELECT Name, Quantity, Price " +
                 "FROM Product");
             dataGridView1.ReadOnly = true;
             textBoxPrice.ReadOnly = true;
             
 
-            List<Products> st = ConvertDataTableToList();
+            List<Product> st = ConvertDataTableToList();
 
             foreach (var item in st)
             {
-                comboBox1.Items.Add(item.Product);
+                comboBox1.Items.Add(item.ProdName);
             }
 
         }
@@ -82,9 +96,9 @@ namespace WSB_PO.Invoices
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<Products> st = ConvertDataTableToList();
+            List<Product> st = ConvertDataTableToList();
 
-            var find = st.Find(c => c.Product.Contains(comboBox1.Text));
+            var find = st.Find(c => c.ProdName.Contains(comboBox1.Text));
             textBoxPrice.Text = find.Check;
             for (int i = 0; i < int.Parse(find.Quantity); i++)
             {
@@ -103,7 +117,14 @@ namespace WSB_PO.Invoices
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+             if (_prod == null)
+            {
+                MessageBox.Show("Wypełnij wszystkie pola!");
+            }
+            else
+            {
+               Close();
+            }
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {

@@ -96,7 +96,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="IDbAccess.cs" />
+    <Compile Include="Interfaces\NewDb\IDataBase.cs" />
+    <Compile Include="Interfaces\IDbAccess.cs" />
+    <Compile Include="Interfaces\NewDb\IInvoice.cs" />
+    <Compile Include="Interfaces\IModifyForm.cs" />
+    <Compile Include="Interfaces\NewDb\IProduct.cs" />
+    <Compile Include="Interfaces\NewDb\IRecipient.cs" />
     <Compile Include="Invoices\Models\Recipient.cs" />
     <Compile Include="Invoices\FormAddProd.cs">
       <SubType>Form</SubType>
@@ -112,6 +117,7 @@
     </Compile>
     <Compile Include="Invoices\Models\Invoice.cs" />
     <Compile Include="Invoices\Models\Product.cs" />
+    <Compile Include="DataBase\DataOps.cs" />
     <Compile Include="Warehouse\FormAddProduct.cs">
       <SubType>Form</SubType>
     </Compile>
