@@ -21,7 +21,7 @@ namespace WSB_PO
             //Moze lepiej daæ datagridview zamiast listbox
             //gdy starczy czasu zmieñ interfejs DataBase 
 
-            //zabezpieczyæ przycisk X w przypadku gdy ktos wyjdzie, kompozycja lub overriding buttona X
+            //zabezpieczyæ przycisk X w przypadku gdy ktos wyjdzie, kompozycja lub overriding buttona X <--- wa¿ne!!!!
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -31,11 +31,12 @@ namespace WSB_PO
                 {
                     fainvoice.ShowDialog();
 
-                    //potrzebny if, w przypadku gdy ktoœ wciœnie X musi po prostu zamknac okno i reszte miec w dupie
-                    listInvoices.Add(new Invoices.Invoice(fainvoice.Inv.InvoiceId, fainvoice.Inv.RecipientId,
-                        DateTime.Now, fainvoice.Inv.Stuff, fainvoice.Inv.Recipient));
-                    var db = new DbAccess();
-
+                    if (fainvoice.Inv.Stuff != null)
+                    {
+                        listInvoices.Add(new Invoices.Invoice(fainvoice.Inv.InvoiceId, fainvoice.Inv.RecipientId,
+                       DateTime.Now, fainvoice.Inv.Stuff, fainvoice.Inv.Recipient));
+                        var db = new DbAccess();
+                    }
                     int size = listInvoices.Count-1;
                     if (listInvoices.Count == 1)
                     {

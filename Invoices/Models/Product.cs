@@ -12,7 +12,7 @@ namespace WSB_PO.Invoices
         private string _name;  
         private string _check;              
         private string _quantity; 
-        private string _describe;
+        private string _desc;
         private string _tax;
         private string _price;
         
@@ -26,7 +26,7 @@ namespace WSB_PO.Invoices
             Quantity = quantity;
             Check = check;
             ProdName = name;
-            Describe = desc;
+            Desc = desc;
             Price = price;
             Tax = tax;
         }
@@ -36,10 +36,10 @@ namespace WSB_PO.Invoices
             private set { _price = value; }
         }
 
-        public string Describe
+        public string Desc
         {
-            get { return _describe; }
-            private set { _describe = value; }
+            get { return _desc; }
+            private set { _desc = value; }
         }
 
         public string Tax

@@ -39,7 +39,6 @@ namespace WSB_PO.Invoices
             this.Location = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button3 = new System.Windows.Forms.Button();
             this.invoiceLocation = new System.Windows.Forms.TextBox();
             this.invoiceSaleDate = new System.Windows.Forms.TextBox();
@@ -72,12 +71,13 @@ namespace WSB_PO.Invoices
             this.label2 = new System.Windows.Forms.Label();
             this.invoiceOff = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ProdName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.taxDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.checkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.describeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -147,7 +147,7 @@ namespace WSB_PO.Invoices
             this.quantityDataGridViewTextBoxColumn,
             this.taxDataGridViewTextBoxColumn,
             this.checkDataGridViewTextBoxColumn,
-            this.describeDataGridViewTextBoxColumn});
+            this.Desc});
             this.dataGridView1.DataSource = this.productsBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(14, 557);
             this.dataGridView1.Name = "dataGridView1";
@@ -155,10 +155,6 @@ namespace WSB_PO.Invoices
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(633, 185);
             this.dataGridView1.TabIndex = 40;
-            // 
-            // productsBindingSource
-            // 
-            this.productsBindingSource.DataSource = typeof(WSB_PO.Invoices.Product);
             // 
             // button3
             // 
@@ -248,6 +244,7 @@ namespace WSB_PO.Invoices
             this.button5.TabIndex = 53;
             this.button5.Text = "Powrót";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label7
             // 
@@ -428,6 +425,10 @@ namespace WSB_PO.Invoices
             this.label3.TabIndex = 68;
             this.label3.Text = "Obniżka:";
             // 
+            // productsBindingSource
+            // 
+            this.productsBindingSource.DataSource = typeof(WSB_PO.Invoices.Product);
+            // 
             // ProdName
             // 
             this.ProdName.DataPropertyName = "ProdName";
@@ -463,12 +464,12 @@ namespace WSB_PO.Invoices
             this.checkDataGridViewTextBoxColumn.Name = "checkDataGridViewTextBoxColumn";
             this.checkDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // describeDataGridViewTextBoxColumn
+            // Desc
             // 
-            this.describeDataGridViewTextBoxColumn.DataPropertyName = "Describe";
-            this.describeDataGridViewTextBoxColumn.HeaderText = "Uwagi";
-            this.describeDataGridViewTextBoxColumn.Name = "describeDataGridViewTextBoxColumn";
-            this.describeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.Desc.DataPropertyName = "Desc";
+            this.Desc.HeaderText = "Uwagi";
+            this.Desc.Name = "Desc";
+            this.Desc.ReadOnly = true;
             // 
             // FormAddInvoice
             // 
@@ -565,11 +566,12 @@ namespace WSB_PO.Invoices
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox invoiceOff;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn describeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProdName;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn taxDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn checkDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn describeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Desc;
     }
 }

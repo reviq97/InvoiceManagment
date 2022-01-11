@@ -58,18 +58,22 @@ namespace WSB_PO.Invoices
                 {
                     add.ShowDialog();
 
+                    if (add.prod != null)
+                    {
+                        var prod = new Product(add.prod.Quantity, add.prod.Check, add.prod.Tax, add.prod.ProdName,
+                        add.prod.Desc, add.prod.Price);
 
-                    var prod = new Product(add.prod.Quantity, add.prod.Check, add.prod.Tax, add.prod.ProdName,
-                        add.prod.Describe, add.prod.Price);
-
-                    stuffList.Add(prod);
-                    dataGridView1.DataSource = typeof(List<Product>);
-                    dataGridView1.DataSource = stuffList;
+                        stuffList.Add(prod);
+                        dataGridView1.DataSource = typeof(List<Product>);
+                        dataGridView1.DataSource = stuffList;
+                    }
+                    
+                    
                 }
-                catch (Exception)
+                catch (Exception w)
                 {
 
-                    MessageBox.Show("Wypełnij wszystkie pola!");
+                    MessageBox.Show(w.Message);
                 }
             }
 
@@ -77,15 +81,31 @@ namespace WSB_PO.Invoices
 
         public void DeleteProductInvoice(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Czy na pewno chcesz usunąć zaznaczony produkt?", "Potwierdzenie",
-                MessageBoxButtons.YesNo);
-            if (dr == DialogResult.Yes)
+            try
             {
-                var id = dataGridView1.CurrentRow.Index;
-                stuffList.RemoveAt(id);
-                dataGridView1.DataSource = typeof(List<Product>);
-                dataGridView1.DataSource = stuffList; //binding
+                DialogResult dr = MessageBox.Show("Czy na pewno chcesz usunąć zaznaczony produkt?", "Potwierdzenie",
+                MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
+                {
+                    if (stuffList.Count != 0)
+                    {
+                        var id = dataGridView1.CurrentRow.Index;
+                        stuffList.RemoveAt(id);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nie możesz usunąć pustej listy!");
+                    }
+
+                    dataGridView1.DataSource = typeof(List<Product>);
+                    dataGridView1.DataSource = stuffList; //binding
+                }
             }
+            catch (Exception z)
+            {
+                MessageBox.Show(z.Message);
+            }
+            
         }
 
         private void invoiceApply_Click(object sender, EventArgs e)
@@ -130,9 +150,9 @@ namespace WSB_PO.Invoices
 
                             dbQuery.UpdateQuery(math, name);
 
-                            var describe = stuffList[i].Describe.ToString();
+                            var describe = stuffList[i].Desc.ToString();
 
-                            dbQuery.InsertQuery(hash, name, qSubtract, DateTime.Now.ToString(), DateTime.Now.ToString(), describe);
+                            dbQuery.InsertQuery(hash, invoiceNumber.Text, name, qSubtract, stuffList[i].Tax , stuffList[i].Price, DateTime.Now.ToString(), DateTime.Now.ToString(), describe);
                         }
 
                         this.Close();
@@ -145,6 +165,11 @@ namespace WSB_PO.Invoices
             }
 
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

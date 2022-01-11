@@ -99,7 +99,7 @@ namespace WSB_PO
                 try
                 {
                     using (SQLiteCommand command = new SQLiteCommand("INSERT INTO Product ( Name, Ean, Quantity, Tax, Price, PriceWithTax, Unit, CreatedOn, ModifiedOn) " +
-                        "VALUES (@Id, @Name, @Ean, @Quantity, @Tax, @Price, @PriceWithTax, @Unit, @CreatedOn, @ModifiedOn)", con))
+                        "VALUES (@Name, @Ean, @Quantity, @Tax, @Price, @PriceWithTax, @Unit, @CreatedOn, @ModifiedOn)", con))
                     {
                         
                         command.Parameters.AddWithValue("@Name", name);
@@ -164,7 +164,7 @@ namespace WSB_PO
                 }
             }
         }
-        public void InsertQuery(uint hasz, string sold, string quantity, string created, string modified, string comment)
+        public void InsertQuery(uint hasz, string invNumber, string sold, string quantity, string vat, string priceNet, string created, string modified, string comment)
         {
             var polishCulture = new CultureInfo("pl-PL");
             string presentTime = DateTime.Now.ToString(polishCulture);
@@ -173,12 +173,15 @@ namespace WSB_PO
             {
                 try
                 {
-                    using (SQLiteCommand command = new SQLiteCommand("INSERT INTO Invoices (HashID, Sold, Quantity, CreatedOn, ModifiedOn, Comment) " +
-                        "VALUES (@HashID, @Sold, @Quantity, @CreatedOn, @ModifiedOn, @Comment)", con))
+                    using (SQLiteCommand command = new SQLiteCommand("INSERT INTO Invoices (HashID, InvNumber, Sold, Quantity, VAT, PriceNetto, CreatedOn, ModifiedOn, Comment) " +
+                        "VALUES (@HashID,@InvNumber, @Sold, @Quantity, @VAT, @PriceNetto, @CreatedOn, @ModifiedOn, @Comment)", con))
                     {
                         command.Parameters.AddWithValue("@HashID", hasz);
+                        command.Parameters.AddWithValue("@InvNumber", invNumber);
                         command.Parameters.AddWithValue("@Sold", sold);
                         command.Parameters.AddWithValue("@Quantity", quantity);
+                        command.Parameters.AddWithValue("@VAT", vat);
+                        command.Parameters.AddWithValue("@PriceNetto", priceNet);
                         command.Parameters.AddWithValue("@CreatedOn", created);
                         command.Parameters.AddWithValue("@ModifiedOn", modified);
                         command.Parameters.AddWithValue("@Comment", comment);

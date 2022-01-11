@@ -106,6 +106,7 @@ namespace WSB_PO.Invoices
             this.cbx_Tax.Name = "cbx_Tax";
             this.cbx_Tax.Size = new System.Drawing.Size(85, 21);
             this.cbx_Tax.TabIndex = 50;
+            this.cbx_Tax.SelectedIndexChanged += new System.EventHandler(this.cbx_Tax_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -138,7 +139,6 @@ namespace WSB_PO.Invoices
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 53;
-            this.textBox5.Click += new System.EventHandler(this.textBox5_Click);
             // 
             // button1
             // 

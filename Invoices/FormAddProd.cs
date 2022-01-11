@@ -31,29 +31,6 @@ namespace WSB_PO.Invoices
         {
             InitializeComponent();
         }
-        private void textBox5_Click(object sender, EventArgs e)
-        {
-            double price, tax, quantity, brutto;
-            textBox5.ReadOnly = true;
-            try
-            {
-                price = double.Parse(textBoxPrice.Text, CultureInfo.GetCultureInfo("en-EN"));
-                quantity = double.Parse(comboBox2.Text, CultureInfo.GetCultureInfo("en-EN"));
-                tax = double.Parse(cbx_Tax.Text.Remove(cbx_Tax.Text.Length - 1), CultureInfo.GetCultureInfo("pl-PL"));
-                string description = textBoxDesc.Text;
-
-                brutto = ((price * quantity) * (1 + (tax / 100))) / 100;
-                textBox5.Text = brutto.ToString("F2");
-
-                prod = new Product(quantity.ToString(), brutto.ToString()
-                    , cbx_Tax.Text.ToString(), comboBox1.Text, description, textBoxPrice.Text.ToString());
-            }
-            catch (Exception msg)
-            {
-                MessageBox.Show(msg.Message);
-            }
-            
-        }
 
         private List<Product> ConvertDataTableToList()
         {
@@ -131,6 +108,34 @@ namespace WSB_PO.Invoices
             if (e.RowIndex>=0)
             {
 
+            }
+        }
+
+        private void cbx_Tax_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbx_Tax.Text.Length>0)
+            {
+                double price, tax, quantity, brutto;
+                textBox5.ReadOnly = true;
+                try
+                {
+                    price = double.Parse(textBoxPrice.Text, CultureInfo.GetCultureInfo("en-EN"));
+                    quantity = double.Parse(comboBox2.Text, CultureInfo.GetCultureInfo("en-EN"));
+                    tax = double.Parse(cbx_Tax.Text.Remove(cbx_Tax.Text.Length - 1), CultureInfo.GetCultureInfo("pl-PL"));
+                    string description = textBoxDesc.Text;
+
+
+                    brutto = (((price / 100) * (1 + (tax / 100))) * quantity);
+
+                    textBox5.Text = brutto.ToString("F2");
+
+                    prod = new Product(quantity.ToString(), brutto.ToString()
+                        , cbx_Tax.Text.ToString(), comboBox1.Text, description, textBoxPrice.Text.ToString());
+                }
+                catch (Exception msg)
+                {
+                    MessageBox.Show(msg.Message);
+                }
             }
         }
     }
