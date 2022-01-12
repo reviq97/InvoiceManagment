@@ -128,8 +128,6 @@ namespace WSB_PO
         }
         public  void InsertQuery(uint hash, string name, string adress, string city, string postcode, string discount, string nip, string phone, string email, string category)
         {
-            var polishCulture = new CultureInfo("pl-PL");
-            string presentTime = DateTime.Now.ToString(polishCulture);
             DbAccess db = new DbAccess();
             using (var con = new SQLiteConnection(db.LoadConnectionString()))
             {
@@ -166,8 +164,6 @@ namespace WSB_PO
         }
         public void InsertQuery(uint hasz, string invNumber, string sold, string quantity, string vat, string priceNet, string created, string modified, string comment)
         {
-            var polishCulture = new CultureInfo("pl-PL");
-            string presentTime = DateTime.Now.ToString(polishCulture);
             DbAccess db = new DbAccess();
             using (var con = new SQLiteConnection(db.LoadConnectionString()))
             {
@@ -260,15 +256,16 @@ namespace WSB_PO
         {
             DbAccess db = new DbAccess();
             List<Product> stuf = new List<Product>();
-            DataTable data = new DataTable();
-            data = db.GetProducts();
+            var data = db.GetProducts();
 
             for (int i = 0; i < data.Rows.Count; i++)
             {
-                Product tmp = new Product();
-                tmp.ProdName = data.Rows[i]["Name"].ToString();
-                tmp.Check = data.Rows[i]["Price"].ToString();
-                tmp.Quantity = data.Rows[i]["Quantity"].ToString();
+                Product tmp = new Product
+                {
+                    ProdName = data.Rows[i]["Name"].ToString(),
+                    Check = data.Rows[i]["Price"].ToString(),
+                    Quantity = data.Rows[i]["Quantity"].ToString()
+                };
                 stuf.Add(tmp);
             }
             return stuf;
@@ -277,9 +274,8 @@ namespace WSB_PO
         {
             DbAccess db = new DbAccess();
             List<Recipient> stuf = new List<Recipient>();
-            DataTable data = new DataTable();
 
-            data = db.Query("SELECT * FROM recipient");
+            var data = db.Query("SELECT * FROM recipient");
 
             for (int i = 0; i < data.Rows.Count; i++)
             {

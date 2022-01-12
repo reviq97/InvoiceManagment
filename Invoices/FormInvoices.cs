@@ -9,8 +9,8 @@ namespace WSB_PO
     public partial class FormInvoices : Form
     {
         public static DataTable data = new DataTable();
-        private static List<Invoices.Invoice> listInvoices = new List<Invoices.Invoice>();
-        DbAccess db = new DbAccess();
+        private static readonly List<Invoices.Invoice> listInvoices = new List<Invoices.Invoice>();
+        readonly DbAccess db = new DbAccess();
         
 
 

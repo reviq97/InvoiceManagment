@@ -36,15 +36,16 @@ namespace WSB_PO.Invoices
         {
             DbAccess db = new DbAccess();
             List<Product> stuf = new List<Product>();
-            DataTable data = new DataTable();
-            data = db.GetProducts();
+            var data = db.GetProducts();
 
             for (int i = 0; i < data.Rows.Count; i++)
             {
-                Product tmp = new Product();
-                tmp.ProdName = data.Rows[i]["Name"].ToString();
-                tmp.Check= data.Rows[i]["Price"].ToString();
-                tmp.Quantity = data.Rows[i]["Quantity"].ToString();
+                Product tmp = new Product
+                {
+                    ProdName = data.Rows[i]["Name"].ToString(),
+                    Check = data.Rows[i]["Price"].ToString(),
+                    Quantity = data.Rows[i]["Quantity"].ToString()
+                };
                 stuf.Add(tmp);
             }
             return stuf;
@@ -126,11 +127,12 @@ namespace WSB_PO.Invoices
 
 
                     brutto = (((price / 100) * (1 + (tax / 100))) * quantity);
+                    price *= (quantity)/100;
 
                     textBox5.Text = brutto.ToString("F2");
 
-                    prod = new Product(quantity.ToString(), brutto.ToString()
-                        , cbx_Tax.Text.ToString(), comboBox1.Text, description, textBoxPrice.Text.ToString());
+                    prod = new Product(quantity.ToString(), brutto.ToString("F2")
+                        , cbx_Tax.Text.ToString(), comboBox1.Text, description, price.ToString("F2"));
                 }
                 catch (Exception msg)
                 {

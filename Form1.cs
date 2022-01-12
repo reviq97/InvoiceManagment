@@ -17,7 +17,7 @@ namespace WSB_PO
             InitializeComponent();
         }
 
-        private void pictureInvoices_Click(object sender, EventArgs e)
+        private void PictureInvoices_Click(object sender, EventArgs e)
         {
             using (FormInvoices fi = new FormInvoices())
             {

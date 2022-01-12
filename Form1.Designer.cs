@@ -103,7 +103,7 @@
             this.pictureInvoices.Size = new System.Drawing.Size(128, 128);
             this.pictureInvoices.TabIndex = 6;
             this.pictureInvoices.TabStop = false;
-            this.pictureInvoices.Click += new System.EventHandler(this.pictureInvoices_Click);
+            this.pictureInvoices.Click += new System.EventHandler(this.PictureInvoices_Click);
             // 
             // panel1
             // 

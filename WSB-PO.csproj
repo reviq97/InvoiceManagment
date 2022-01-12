@@ -102,6 +102,7 @@
     <Compile Include="Interfaces\IModifyForm.cs" />
     <Compile Include="Interfaces\NewDb\IProduct.cs" />
     <Compile Include="Interfaces\NewDb\IRecipient.cs" />
+    <Compile Include="Invoices\Models\Person.cs" />
     <Compile Include="Invoices\Models\Recipient.cs" />
     <Compile Include="Invoices\FormAddProd.cs">
       <SubType>Form</SubType>

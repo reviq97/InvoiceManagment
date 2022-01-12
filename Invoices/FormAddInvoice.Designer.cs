@@ -97,7 +97,6 @@ namespace WSB_PO.Invoices
             this.invoiceNumber.Name = "invoiceNumber";
             this.invoiceNumber.Size = new System.Drawing.Size(100, 20);
             this.invoiceNumber.TabIndex = 12;
-            this.invoiceNumber.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // DateProd
             // 

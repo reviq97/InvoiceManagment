@@ -31,19 +31,13 @@ namespace WSB_PO.Invoices
                  }
             private set { _inv = value; }
         }
-        private static List<Product> stuffList = new List<Product>();
-
-        DataTable toGrid = new DataTable();
+        private static readonly List<Product> stuffList = new List<Product>();
+        readonly DataTable toGrid = new DataTable();
         public FormAddInvoice()
         {
             InitializeComponent();
             stuffList.Clear();
         }
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            string FV = invoiceNumber.Text;
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -60,10 +54,27 @@ namespace WSB_PO.Invoices
 
                     if (add.prod != null)
                     {
-                        var prod = new Product(add.prod.Quantity, add.prod.Check, add.prod.Tax, add.prod.ProdName,
-                        add.prod.Desc, add.prod.Price);
+                        if (stuffList.Exists(stuffList => stuffList.ProdName == add.prod.ProdName && stuffList.Tax == add.prod.Tax))
+                        {
+                            var productToFind = stuffList.Find(p => p.ProdName == add.prod.ProdName && p.Tax == add.prod.Tax);
+                            var quantityToAdd = (double.Parse(productToFind.Quantity) + double.Parse(add.prod.Quantity)).ToString();
+                            var priceToAdd = ((double.Parse(productToFind.Price) + ((double.Parse(add.prod.Price))))).ToString("F2");
+                            var checkToAdd = (double.Parse(productToFind.Check) + double.Parse(add.prod.Check)).ToString("F2");
+                            var doubledProduct = new Product(quantityToAdd, checkToAdd, add.prod.Tax, add.prod.ProdName, add.prod.Desc, priceToAdd );
 
-                        stuffList.Add(prod);
+                            var toRemove = stuffList.FindIndex(p => p.ProdName == add.prod.ProdName && p.Tax == add.prod.Tax);
+                            stuffList.RemoveAt(toRemove);
+                            stuffList.Add(doubledProduct);
+                        }
+                        else
+                        {
+                            var products = new Product(add.prod.Quantity, add.prod.Check, add.prod.Tax, add.prod.ProdName,
+                                                            add.prod.Desc, add.prod.Price);
+                            stuffList.Add(products);
+
+                        }
+
+
                         dataGridView1.DataSource = typeof(List<Product>);
                         dataGridView1.DataSource = stuffList;
                     }
