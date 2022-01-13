@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WSB_PO.Invoices.Models
 {
-    class Person
+    public partial class Person
     {
         private string _nameAndSur;
 

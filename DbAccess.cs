@@ -12,7 +12,7 @@ using WSB_PO.Invoices;
 
 namespace WSB_PO
 {
-    public class DbAccess : IDbAccess
+    class DbAccess : IDbAccess
     {
         public string LoadConnectionString(string id = "Default")
         {
@@ -260,12 +260,13 @@ namespace WSB_PO
 
             for (int i = 0; i < data.Rows.Count; i++)
             {
-                Product tmp = new Product
-                {
-                    ProdName = data.Rows[i]["Name"].ToString(),
-                    Check = data.Rows[i]["Price"].ToString(),
-                    Quantity = data.Rows[i]["Quantity"].ToString()
-                };
+
+                Product tmp = new Product(
+                    data.Rows[i]["Name"].ToString(),
+                    data.Rows[i]["Price"].ToString(),
+                    data.Rows[i]["Quantity"].ToString()
+                );
+                
                 stuf.Add(tmp);
             }
             return stuf;

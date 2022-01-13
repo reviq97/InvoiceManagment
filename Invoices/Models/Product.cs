@@ -15,8 +15,20 @@ namespace WSB_PO.Invoices
         private string _desc;
         private string _tax;
         private string _price;
-        
 
+        public Product(string quantity, string check, string name)
+        {
+            Quantity = quantity;
+            Check = check;
+            ProdName = name;
+        }
+        public Product(string quantity, string check, string name, string desc)
+        {
+            Quantity = quantity;
+            Check = check;
+            ProdName = name;
+            Desc = desc;
+        }
         public Product()
         {
 
@@ -51,19 +63,19 @@ namespace WSB_PO.Invoices
         public string Quantity
         {
             get { return _quantity; }
-             set { _quantity = value; }
+            private set { _quantity = value; }
         }
 
         public string Check
         {
             get { return _check; }
-             set { _check = value; }
+            private set { _check = value; }
         }
 
         public string ProdName
         {
             get { return _name; }
-             set { _name = value; }
+            private set { _name = value; }
         }
     }
 }
