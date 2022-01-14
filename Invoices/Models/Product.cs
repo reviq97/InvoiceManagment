@@ -16,18 +16,20 @@ namespace WSB_PO.Invoices
         private string _tax;
         private string _price;
 
-        public Product(string quantity, string check, string name)
+        public Product(string quantity, string check, string name,string tax)
         {
             Quantity = quantity;
             Check = check;
             ProdName = name;
+            Tax = tax;
         }
-        public Product(string quantity, string check, string name, string desc)
+        public Product(string quantity, string check, string name, string desc, string tax)
         {
             Quantity = quantity;
             Check = check;
             ProdName = name;
             Desc = desc;
+            Tax = tax;
         }
         public Product()
         {

@@ -262,9 +262,10 @@ namespace WSB_PO
             {
 
                 Product tmp = new Product(
-                    data.Rows[i]["Name"].ToString(),
+                    data.Rows[i]["Quantity"].ToString(),
                     data.Rows[i]["Price"].ToString(),
-                    data.Rows[i]["Quantity"].ToString()
+                    data.Rows[i]["Name"].ToString(),
+                    data.Rows[i]["Tax"].ToString()
                 );
                 
                 stuf.Add(tmp);

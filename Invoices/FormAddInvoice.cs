@@ -186,5 +186,11 @@ namespace WSB_PO.Invoices
         {
             this.Close();
         }
+
+        private void FormAddInvoice_Load(object sender, EventArgs e)
+        {
+            invoiceDate.ReadOnly = true;
+            invoiceDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
+        }
     }
 }

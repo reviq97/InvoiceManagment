@@ -53,8 +53,10 @@ namespace WSB_PO.Invoices
                 (
                     data.Rows[i]["Quantity"].ToString(),
                     data.Rows[i]["Price"].ToString(),
-                    data.Rows[i]["Name"].ToString()
-                );
+                    data.Rows[i]["Name"].ToString(),
+                    data.Rows[i]["Tax"].ToString()
+
+                ); 
                 stuf.Add(tmp);
             }
             return stuf;
@@ -63,12 +65,12 @@ namespace WSB_PO.Invoices
         private void FormAddProd_Load(object sender, EventArgs e)
         {
             DbAccess db = new DbAccess();
-            
-            dataGridView1.DataSource = db.Query("SELECT Name, Quantity, Price " +
+            dataGridView1.DataSource = db.Query("SELECT Name, Quantity, Price, Tax " +
                 "FROM Product");
+            cbx_Tax.ReadOnly = true;
             dataGridView1.ReadOnly = true;
             textBoxPrice.ReadOnly = true;
-            
+            priceBox.ReadOnly = true;
 
             List<Product> st = ConvertDataTableToList();
 
@@ -87,6 +89,7 @@ namespace WSB_PO.Invoices
 
             var find = st.Find(c => c.ProdName.Contains(comboBox1.Text));
             textBoxPrice.Text = find.Check;
+            cbx_Tax.Text = find.Tax + "%";
             comboBox2.Items.Clear();
             for (int i = 0; i < int.Parse(find.Quantity); i++)
             {
@@ -126,7 +129,6 @@ namespace WSB_PO.Invoices
 
         private void cbx_Tax_SelectedIndexChanged(object sender, EventArgs e)
         {
-            priceBox.ReadOnly = true;
             try
             {
                 NullOrEmptyState();
@@ -141,7 +143,6 @@ namespace WSB_PO.Invoices
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             
-            priceBox.ReadOnly = true;
             try
             {
                 NullOrEmptyState();
@@ -159,7 +160,6 @@ namespace WSB_PO.Invoices
                 double quantity = double.Parse(comboBox2.Text, CultureInfo.GetCultureInfo("en-EN"));
                 double tax = double.Parse(cbx_Tax.Text.Remove(cbx_Tax.Text.Length - 1), CultureInfo.GetCultureInfo("pl-PL"));
                 string description = textBoxDesc.Text;
-
 
                 double brutto = (((price / 100) * (1 + (tax / 100))) * quantity);
                 price *= (quantity) / 100;

@@ -34,7 +34,6 @@ namespace WSB_PO.Invoices
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.cbx_Tax = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxDesc = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -44,6 +43,7 @@ namespace WSB_PO.Invoices
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbx_Tax = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,21 +92,6 @@ namespace WSB_PO.Invoices
             this.label4.Size = new System.Drawing.Size(67, 13);
             this.label4.TabIndex = 49;
             this.label4.Text = "Stawka VAT";
-            // 
-            // cbxTax
-            // 
-            this.cbx_Tax.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbx_Tax.FormattingEnabled = true;
-            this.cbx_Tax.Items.AddRange(new object[] {
-            "0%",
-            "5%",
-            "8%",
-            "23%"});
-            this.cbx_Tax.Location = new System.Drawing.Point(420, 302);
-            this.cbx_Tax.Name = "cbxTax";
-            this.cbx_Tax.Size = new System.Drawing.Size(85, 21);
-            this.cbx_Tax.TabIndex = 50;
-            this.cbx_Tax.SelectedIndexChanged += new System.EventHandler(this.cbx_Tax_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -177,21 +162,29 @@ namespace WSB_PO.Invoices
             this.textBoxPrice.Size = new System.Drawing.Size(79, 20);
             this.textBoxPrice.TabIndex = 43;
             // 
-            // quantityBox
+            // comboBox2
             // 
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(308, 303);
-            this.comboBox2.Name = "quantityBox";
+            this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(75, 21);
             this.comboBox2.TabIndex = 58;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
+            // taxBox
+            // 
+            this.cbx_Tax.Location = new System.Drawing.Point(420, 304);
+            this.cbx_Tax.Name = "taxBox";
+            this.cbx_Tax.Size = new System.Drawing.Size(85, 20);
+            this.cbx_Tax.TabIndex = 59;
             // 
             // FormAddProd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(568, 500);
+            this.Controls.Add(this.cbx_Tax);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button2);
@@ -200,7 +193,6 @@ namespace WSB_PO.Invoices
             this.Controls.Add(this.priceBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxDesc);
-            this.Controls.Add(this.cbx_Tax);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -223,7 +215,6 @@ namespace WSB_PO.Invoices
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbx_Tax;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxDesc;
         private System.Windows.Forms.Label label6;
@@ -233,5 +224,6 @@ namespace WSB_PO.Invoices
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox textBoxPrice;
         private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.TextBox cbx_Tax;
     }
 }
