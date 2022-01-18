@@ -40,7 +40,12 @@ namespace WSB_PO.Invoices
             this.label6 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ProdName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.taxDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.checkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button3 = new System.Windows.Forms.Button();
             this.invoiceLocation = new System.Windows.Forms.TextBox();
             this.invoiceSaleDate = new System.Windows.Forms.TextBox();
@@ -61,7 +66,7 @@ namespace WSB_PO.Invoices
             this.invoicePostal = new System.Windows.Forms.TextBox();
             this.invoiceNip = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.invoiceLoc = new System.Windows.Forms.TextBox();
+            this.invoiceRecLoc = new System.Windows.Forms.TextBox();
             this.invoiceMail = new System.Windows.Forms.TextBox();
             this.invoiceTel = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -73,11 +78,6 @@ namespace WSB_PO.Invoices
             this.label2 = new System.Windows.Forms.Label();
             this.invoiceOff = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.taxDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.checkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
@@ -149,7 +149,7 @@ namespace WSB_PO.Invoices
             this.checkDataGridViewTextBoxColumn,
             this.Desc});
             this.dataGridView1.DataSource = this.productsBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 557);
+            this.dataGridView1.Location = new System.Drawing.Point(15, 588);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -163,12 +163,44 @@ namespace WSB_PO.Invoices
             this.ProdName.Name = "ProdName";
             this.ProdName.ReadOnly = true;
             // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Cena netto";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Ilość";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // taxDataGridViewTextBoxColumn
+            // 
+            this.taxDataGridViewTextBoxColumn.DataPropertyName = "Tax";
+            this.taxDataGridViewTextBoxColumn.HeaderText = "VAT";
+            this.taxDataGridViewTextBoxColumn.Name = "taxDataGridViewTextBoxColumn";
+            this.taxDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // checkDataGridViewTextBoxColumn
+            // 
+            this.checkDataGridViewTextBoxColumn.DataPropertyName = "Check";
+            this.checkDataGridViewTextBoxColumn.HeaderText = "Cena brutto";
+            this.checkDataGridViewTextBoxColumn.Name = "checkDataGridViewTextBoxColumn";
+            this.checkDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // Desc
             // 
             this.Desc.DataPropertyName = "Desc";
             this.Desc.HeaderText = "Uwagi";
             this.Desc.Name = "Desc";
             this.Desc.ReadOnly = true;
+            // 
+            // productsBindingSource
+            // 
+            this.productsBindingSource.DataSource = typeof(WSB_PO.Invoices.Product);
             // 
             // button3
             // 
@@ -203,7 +235,7 @@ namespace WSB_PO.Invoices
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(96, 528);
+            this.button2.Location = new System.Drawing.Point(97, 559);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 49;
@@ -213,7 +245,7 @@ namespace WSB_PO.Invoices
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(15, 528);
+            this.button1.Location = new System.Drawing.Point(16, 559);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 48;
@@ -224,7 +256,7 @@ namespace WSB_PO.Invoices
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(12, 484);
+            this.label13.Location = new System.Drawing.Point(13, 515);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(547, 13);
             this.label13.TabIndex = 50;
@@ -234,7 +266,7 @@ namespace WSB_PO.Invoices
             // label14
             // 
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label14.Location = new System.Drawing.Point(12, 502);
+            this.label14.Location = new System.Drawing.Point(13, 533);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(134, 23);
             this.label14.TabIndex = 51;
@@ -242,7 +274,7 @@ namespace WSB_PO.Invoices
             // 
             // invoiceApply
             // 
-            this.invoiceApply.Location = new System.Drawing.Point(14, 791);
+            this.invoiceApply.Location = new System.Drawing.Point(15, 822);
             this.invoiceApply.Name = "invoiceApply";
             this.invoiceApply.Size = new System.Drawing.Size(75, 23);
             this.invoiceApply.TabIndex = 52;
@@ -252,7 +284,7 @@ namespace WSB_PO.Invoices
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(570, 791);
+            this.button5.Location = new System.Drawing.Point(571, 822);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 53;
@@ -342,23 +374,23 @@ namespace WSB_PO.Invoices
             this.label8.TabIndex = 38;
             this.label8.Text = "Miejscowość: ";
             // 
-            // invoiceLoc
+            // invoiceRecLoc
             // 
-            this.invoiceLoc.Location = new System.Drawing.Point(147, 246);
-            this.invoiceLoc.Name = "invoiceLoc";
-            this.invoiceLoc.Size = new System.Drawing.Size(100, 20);
-            this.invoiceLoc.TabIndex = 39;
+            this.invoiceRecLoc.Location = new System.Drawing.Point(147, 246);
+            this.invoiceRecLoc.Name = "invoiceRecLoc";
+            this.invoiceRecLoc.Size = new System.Drawing.Size(100, 20);
+            this.invoiceRecLoc.TabIndex = 39;
             // 
             // invoiceMail
             // 
-            this.invoiceMail.Location = new System.Drawing.Point(147, 403);
+            this.invoiceMail.Location = new System.Drawing.Point(147, 412);
             this.invoiceMail.Name = "invoiceMail";
             this.invoiceMail.Size = new System.Drawing.Size(100, 20);
             this.invoiceMail.TabIndex = 61;
             // 
             // invoiceTel
             // 
-            this.invoiceTel.Location = new System.Drawing.Point(147, 380);
+            this.invoiceTel.Location = new System.Drawing.Point(147, 389);
             this.invoiceTel.Name = "invoiceTel";
             this.invoiceTel.Size = new System.Drawing.Size(100, 20);
             this.invoiceTel.TabIndex = 60;
@@ -366,7 +398,7 @@ namespace WSB_PO.Invoices
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(12, 406);
+            this.label4.Location = new System.Drawing.Point(12, 415);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 26);
             this.label4.TabIndex = 58;
@@ -375,7 +407,7 @@ namespace WSB_PO.Invoices
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(12, 380);
+            this.label5.Location = new System.Drawing.Point(12, 389);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 26);
             this.label5.TabIndex = 57;
@@ -383,7 +415,7 @@ namespace WSB_PO.Invoices
             // 
             // invoicePersonal
             // 
-            this.invoicePersonal.Location = new System.Drawing.Point(147, 357);
+            this.invoicePersonal.Location = new System.Drawing.Point(147, 366);
             this.invoicePersonal.Name = "invoicePersonal";
             this.invoicePersonal.Size = new System.Drawing.Size(100, 20);
             this.invoicePersonal.TabIndex = 56;
@@ -391,7 +423,7 @@ namespace WSB_PO.Invoices
             // label15
             // 
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label15.Location = new System.Drawing.Point(12, 357);
+            this.label15.Location = new System.Drawing.Point(12, 366);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(100, 26);
             this.label15.TabIndex = 55;
@@ -409,7 +441,7 @@ namespace WSB_PO.Invoices
             // 
             // invoiceCat
             // 
-            this.invoiceCat.Location = new System.Drawing.Point(147, 429);
+            this.invoiceCat.Location = new System.Drawing.Point(147, 438);
             this.invoiceCat.Name = "invoiceCat";
             this.invoiceCat.Size = new System.Drawing.Size(100, 20);
             this.invoiceCat.TabIndex = 67;
@@ -417,7 +449,7 @@ namespace WSB_PO.Invoices
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(12, 429);
+            this.label2.Location = new System.Drawing.Point(12, 438);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 26);
             this.label2.TabIndex = 66;
@@ -425,7 +457,7 @@ namespace WSB_PO.Invoices
             // 
             // invoiceOff
             // 
-            this.invoiceOff.Location = new System.Drawing.Point(147, 455);
+            this.invoiceOff.Location = new System.Drawing.Point(147, 464);
             this.invoiceOff.Name = "invoiceOff";
             this.invoiceOff.Size = new System.Drawing.Size(100, 20);
             this.invoiceOff.TabIndex = 69;
@@ -433,52 +465,20 @@ namespace WSB_PO.Invoices
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(12, 455);
+            this.label3.Location = new System.Drawing.Point(12, 464);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 26);
             this.label3.TabIndex = 68;
             this.label3.Text = "Obniżka:";
             // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Cena netto";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Ilość";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // taxDataGridViewTextBoxColumn
-            // 
-            this.taxDataGridViewTextBoxColumn.DataPropertyName = "Tax";
-            this.taxDataGridViewTextBoxColumn.HeaderText = "VAT";
-            this.taxDataGridViewTextBoxColumn.Name = "taxDataGridViewTextBoxColumn";
-            this.taxDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // checkDataGridViewTextBoxColumn
-            // 
-            this.checkDataGridViewTextBoxColumn.DataPropertyName = "Check";
-            this.checkDataGridViewTextBoxColumn.HeaderText = "Cena brutto";
-            this.checkDataGridViewTextBoxColumn.Name = "checkDataGridViewTextBoxColumn";
-            this.checkDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // productsBindingSource
-            // 
-            this.productsBindingSource.DataSource = typeof(WSB_PO.Invoices.Product);
-            // 
             // label16
             // 
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label16.Location = new System.Drawing.Point(11, 325);
+            this.label16.Location = new System.Drawing.Point(11, 334);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(130, 23);
+            this.label16.Size = new System.Drawing.Size(185, 23);
             this.label16.TabIndex = 70;
-            this.label16.Text = "Dane kontaktowe:";
+            this.label16.Text = "Dane kontaktowe nabywcy:";
             // 
             // FormAddInvoice
             // 
@@ -508,7 +508,7 @@ namespace WSB_PO.Invoices
             this.Controls.Add(this.invoiceDate);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.invoiceLoc);
+            this.Controls.Add(this.invoiceRecLoc);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.invoiceNip);
             this.Controls.Add(this.invoicePostal);
@@ -565,7 +565,7 @@ namespace WSB_PO.Invoices
         private System.Windows.Forms.TextBox invoicePostal;
         private System.Windows.Forms.TextBox invoiceNip;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox invoiceLoc;
+        private System.Windows.Forms.TextBox invoiceRecLoc;
         private System.Windows.Forms.TextBox invoiceMail;
         private System.Windows.Forms.TextBox invoiceTel;
         private System.Windows.Forms.Label label4;

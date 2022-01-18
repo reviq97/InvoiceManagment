@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WSB_PO.Interfaces
+namespace WSB_PO.DbQuery
 {
-    interface IProduct
+    class DbCommands : DbAccess
     {
+
     }
 }

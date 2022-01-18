@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace WSB_PO.Invoices
 {
-    public partial class FormAddProd : Form
+    public partial class FormAddProd : Form 
     {
         private Product _prod;
 
@@ -103,6 +103,7 @@ namespace WSB_PO.Invoices
         }
         private void button2_Click(object sender, EventArgs e)
         {
+            prod = null;
             this.Close();
         }
 
@@ -116,6 +117,7 @@ namespace WSB_PO.Invoices
             }
             else
             {
+                Dispose();
                 Close();
             }
         }
@@ -156,7 +158,7 @@ namespace WSB_PO.Invoices
         {
             if (!string.IsNullOrEmpty(cbx_Tax.Text) && !string.IsNullOrEmpty(comboBox2.Text) && !string.IsNullOrEmpty(textBoxPrice.Text))
             {
-                double price = double.Parse(textBoxPrice.Text, CultureInfo.GetCultureInfo("en-EN"));
+                double price = double.Parse(textBoxPrice.Text, CultureInfo.GetCultureInfo("en-EN"))*100;
                 double quantity = double.Parse(comboBox2.Text, CultureInfo.GetCultureInfo("en-EN"));
                 double tax = double.Parse(cbx_Tax.Text.Remove(cbx_Tax.Text.Length - 1), CultureInfo.GetCultureInfo("pl-PL"));
                 string description = textBoxDesc.Text;

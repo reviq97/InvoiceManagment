@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace WSB_PO
 {
-    interface IDbAccess
+    public interface IDbAccess
     {
         DataTable Query(string query);
         string LoadConnectionString(string id = "Default");
         DataTable GetProducts();
         void ModifyQuery();
-        void InsertQuery(string name, double price, double tax, int quantity, string ean, string unit);
+        void InsertQuery(string name, decimal price, decimal tax, int quantity, string ean, string unit);
         void UpdateQuery(string condition, string name);
         void DeleteQuery(int id);
     }

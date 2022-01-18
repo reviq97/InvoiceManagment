@@ -8,12 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WSB_PO.ConvertModelss;
 using WSB_PO.Invoices;
 
 namespace WSB_PO
 {
-    class DbAccess : IDbAccess
+    class DbAccess :  IDbAccess
     {
+        public delegate void Converter();
         public string LoadConnectionString(string id = "Default")
         {
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;
@@ -89,7 +91,7 @@ namespace WSB_PO
 
         }
 
-        public void InsertQuery( string name, double price, double tax, int quantity, string ean, string unit)
+        public void InsertQuery( string name, decimal price, decimal tax, int quantity, string ean, string unit)
         {
             var polishCulture = new CultureInfo("pl-PL");
             string presentTime = DateTime.Now.ToString(polishCulture);
@@ -126,18 +128,19 @@ namespace WSB_PO
                 }
             }
         }
-        public  void InsertQuery(uint hash, string name, string adress, string city, string postcode, string discount, string nip, string phone, string email, string category)
+        public  void InsertQuery(uint hash, string name, string company, string adress, string city, string postcode, string discount, string nip, string phone, string email, string category)
         {
             DbAccess db = new DbAccess();
             using (var con = new SQLiteConnection(db.LoadConnectionString()))
             {
                 try
                 {
-                    using (SQLiteCommand command = new SQLiteCommand("INSERT INTO Recipient (Id, Name, Address, City, Postcode, Discount, Nip, Phone, Email, Category) " +
-                        "VALUES (@Id, @Name, @City, @Address, @Postcode, @Discount, @Nip, @Phone, @Email, @Category)", con))
+                    using (SQLiteCommand command = new SQLiteCommand("INSERT INTO Recipient (Id, Name, Company, Address, City, Postcode, Discount, Nip, Phone, Email, Category) " +
+                        "VALUES (@Id, @Name, @Company ,@City, @Address, @Postcode, @Discount, @Nip, @Phone, @Email, @Category)", con))
                     {
                         command.Parameters.AddWithValue("@Id", hash);
                         command.Parameters.AddWithValue("@Name", name);
+                        command.Parameters.AddWithValue("@Company", company);
                         command.Parameters.AddWithValue("@City", city);
                         command.Parameters.AddWithValue("@Address", adress);
                         command.Parameters.AddWithValue("@Postcode", postcode);
@@ -162,22 +165,24 @@ namespace WSB_PO
                 }
             }
         }
-        public void InsertQuery(uint hasz, string invNumber, string sold, string quantity, string vat, string priceNet, string created, string modified, string comment)
+        public void InsertQuery(uint hasz, string invNumber, string name, string sold, string quantity, string vat, string priceNet, string priceBrutto, string created, string modified, string comment, string add)
         {
             DbAccess db = new DbAccess();
             using (var con = new SQLiteConnection(db.LoadConnectionString()))
             {
                 try
                 {
-                    using (SQLiteCommand command = new SQLiteCommand("INSERT INTO Invoices (HashID, InvNumber, Sold, Quantity, VAT, PriceNetto, CreatedOn, ModifiedOn, Comment) " +
-                        "VALUES (@HashID,@InvNumber, @Sold, @Quantity, @VAT, @PriceNetto, @CreatedOn, @ModifiedOn, @Comment)", con))
+                    using (SQLiteCommand command = new SQLiteCommand("INSERT INTO Invoices (HashID, InvNumber, Name, Sold, Quantity, VAT, PriceNetto, PriceBrutto, CreatedOn, ModifiedOn, Comment) " +
+                        "VALUES (@HashID,@InvNumber,@Name, @Sold, @Quantity, @VAT, @PriceNetto, @PriceBrutto, @CreatedOn, @ModifiedOn, @Comment)", con))
                     {
                         command.Parameters.AddWithValue("@HashID", hasz);
                         command.Parameters.AddWithValue("@InvNumber", invNumber);
+                        command.Parameters.AddWithValue("@Name", name);
                         command.Parameters.AddWithValue("@Sold", sold);
                         command.Parameters.AddWithValue("@Quantity", quantity);
                         command.Parameters.AddWithValue("@VAT", vat);
                         command.Parameters.AddWithValue("@PriceNetto", priceNet);
+                        command.Parameters.AddWithValue("@PriceBrutto", priceBrutto);
                         command.Parameters.AddWithValue("@CreatedOn", created);
                         command.Parameters.AddWithValue("@ModifiedOn", modified);
                         command.Parameters.AddWithValue("@Comment", comment);
@@ -215,16 +220,90 @@ namespace WSB_PO
                         // Check Error
                         if (result < 0)
                             Console.WriteLine("Wystąpił błąd podczas przetwarzania bazy.");
-                        else
-                            MessageBox.Show("Faktura została dodana do bazy danych", "Operacja zakończona sukcesem");
                     }
                 }
                 catch (Exception e)
                 {
+                    MessageBox.Show(e.Message);
+                }
+            }
+        }
+        public void UpdateQuery(uint hash, string invNumber, string name, string sold, string quantity, string vat, string priceNet, string priceBrutto, string created, string modified, string comment)
+        {
+            DbAccess db = new DbAccess();
+            using (var con = new SQLiteConnection(db.LoadConnectionString()))
+            {
+                try
+                {
+                    using (SQLiteCommand command = new SQLiteCommand("UPDATE Invoices SET InvNumber = @InvNumber , Name = @Name, Sold = @Sold, Quantity = @Quantity ," +
+                        " VAT = @VAT, PriceNetto  = @PriceNetto, PriceBrutto = @PriceBrutto, CreatedOn = @CreatedOn, ModifiedOn = @ModifiedOn, Comment = @Comment " +
+                        "where HashID = @id", con))
+                    {
+                        command.Parameters.AddWithValue("@id", hash);
+                        command.Parameters.AddWithValue("@InvNumber", invNumber);
+                        command.Parameters.AddWithValue("@Name", name);
+                        command.Parameters.AddWithValue("@Sold", sold);
+                        command.Parameters.AddWithValue("@Quantity", quantity);
+                        command.Parameters.AddWithValue("@VAT", vat);
+                        command.Parameters.AddWithValue("@PriceNetto", priceNet);
+                        command.Parameters.AddWithValue("@PriceBrutto", priceBrutto);
+                        command.Parameters.AddWithValue("@CreatedOn", created);
+                        command.Parameters.AddWithValue("@ModifiedOn", modified);
+                        command.Parameters.AddWithValue("@Comment", comment);
+
+                        con.Open();
+                        int result = command.ExecuteNonQuery();
+
+                        // Check Error
+                        if (result < 0)
+                            Console.WriteLine("Wystąpił błąd podczas przetwarzania bazy.");
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+            }
+        }
+        public void UpdateQuery(uint hash, string name, string company, string adress, string city, string postcode, string discount, string nip, string phone, string email, string category, string add)
+        {
+            DbAccess db = new DbAccess();
+            using (var con = new SQLiteConnection(db.LoadConnectionString()))
+            {
+                try
+                {
+                    using (SQLiteCommand command = new SQLiteCommand("UPDATE Recipient SET  Name = @Name , Company = @Company, " +
+                        "Address = @Address, City = @City, Postcode = @Postcode, Discount = @Discount, Nip = @Nip, Phone = @Phone, Email = @Email, Category = @Category " +
+                        "where Id= @Id", con))
+                    {
+                        command.Parameters.AddWithValue("@Id", hash);
+                        command.Parameters.AddWithValue("@Name", name);
+                        command.Parameters.AddWithValue("@Company", company);
+                        command.Parameters.AddWithValue("@City", adress);
+                        command.Parameters.AddWithValue("@Address", city);
+                        command.Parameters.AddWithValue("@Postcode", postcode);
+                        command.Parameters.AddWithValue("@Discount", discount);
+                        command.Parameters.AddWithValue("@Nip", nip);
+                        command.Parameters.AddWithValue("@Phone", phone);
+                        command.Parameters.AddWithValue("@Email", email);
+                        command.Parameters.AddWithValue("@Category", category);
+
+
+                        con.Open();
+                        int result = command.ExecuteNonQuery();
+
+                        if (result < 0)
+                            Console.WriteLine("Wystąpił błąd podczas insertowania do bazy.");
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
                     MessageBox.Show("Nie można połączyć się z bazą.", "Błąd");
                 }
             }
         }
+
         public void DeleteQuery(int id)
         {
             DbAccess db = new DbAccess();
@@ -252,54 +331,10 @@ namespace WSB_PO
                 }
             }
         }
-        public List<Product> ConvertDataTableToList()
-        {
-            DbAccess db = new DbAccess();
-            List<Product> stuf = new List<Product>();
-            var data = db.GetProducts();
-
-            for (int i = 0; i < data.Rows.Count; i++)
-            {
-
-                Product tmp = new Product(
-                    data.Rows[i]["Quantity"].ToString(),
-                    data.Rows[i]["Price"].ToString(),
-                    data.Rows[i]["Name"].ToString(),
-                    data.Rows[i]["Tax"].ToString()
-                );
-                
-                stuf.Add(tmp);
-            }
-            return stuf;
-        }
-        public List<Recipient> ConvertDataTableToRecList()
-        {
-            DbAccess db = new DbAccess();
-            List<Recipient> stuf = new List<Recipient>();
-
-            var data = db.Query("SELECT * FROM recipient");
-
-            for (int i = 0; i < data.Rows.Count; i++)
-            {
-
-                Recipient tmp = new Recipient(
-                    data.Rows[i]["Name"].ToString(),
-                    data.Rows[i]["Address"].ToString(),
-                    data.Rows[i]["City"].ToString(),
-                    data.Rows[i]["Postcode"].ToString(),
-                    0,
-                    data.Rows[i]["Nip"].ToString(),
-                    data.Rows[i]["Phone"].ToString(),
-                    data.Rows[i]["Email"].ToString(),
-                    data.Rows[i]["Category"].ToString()
-                    );
-                
-                stuf.Add(tmp);
-
-            }
-            return stuf;
-        }
+        
+        
     }
+        
 }
 
 

@@ -1,8 +1,9 @@
 using System.ComponentModel;
+using WSB_PO.ConvertModelss;
 
 namespace WSB_PO
 {
-    partial class FormInvoices
+    partial class FormInvoices 
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +34,6 @@ namespace WSB_PO
         {
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -58,16 +58,6 @@ namespace WSB_PO
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(174, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Usuń";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(713, 12);
@@ -84,7 +74,7 @@ namespace WSB_PO
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 4;
-            this.button4.Text = "Edytuj";
+            this.button4.Text = "Korekta";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -94,17 +84,17 @@ namespace WSB_PO
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 5;
-            this.button5.Text = "Drukuj";
+            this.button5.Text = "XML";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(336, 12);
+            this.button6.Location = new System.Drawing.Point(174, 12);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 23);
             this.button6.TabIndex = 6;
-            this.button6.Text = "Wyszukaj";
+            this.button6.Text = "Podgląd";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
@@ -117,7 +107,6 @@ namespace WSB_PO
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listBox1);
             this.Name = "FormInvoices";
@@ -128,7 +117,6 @@ namespace WSB_PO
         }
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
 
         private System.Windows.Forms.ListBox listBox1;
 

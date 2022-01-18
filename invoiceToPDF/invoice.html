@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="bootstrap.min.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="invoice.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <div id="invoice">
+            <!--<div class="toolbar hidden-print">
+              <div class="text-end">
+                <button type="button" class="btn btn-dark">
+                  <i class="fa fa-print"></i> Drukuj
+                </button>
+                <button type="button" class="btn btn-danger">
+                  <i class="fa fa-file-pdf-o"></i> Eksportuj do PDF
+                </button>
+              </div>
+              <hr />
+            </div>-->
+            <div class="invoice overflow-auto">
+              <div style="min-width: 600px">
+                <header>
+                  <div class="row">
+                    <div class="col">
+                      <a href="javascript:;">
+                        <img
+                          src="assets/images/logo-icon.png"
+                          width="80"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                    <div class="col company-details">
+                      <h2 class="name">
+                        <a> MNM-Dev </a>
+                      </h2>
+                      <div>Przykładowa 34, 61-650 Poznań, PL</div>
+                      <div>+48 820 320 456</div>
+                      <div>info@mnm.dev</div>
+                    </div>
+                  </div>
+                </header>
+                <main>
+                  <div class="row contacts">
+                    <div class="col invoice-to">
+                      <div class="text-gray-light">NABYWCA:</div>
+                      <h2 class="to">Przykładex Sp. Z O. O.</h2>
+                      <div class="address">
+                        Gabarytowa 17, 78-230 Zielona Góra, PL
+                      </div>
+                      <div class="email">
+                        <a>jan.grzybiarz@przykladex.pl</a>
+                      </div>
+                    </div>
+                    <div class="col invoice-details">
+                      <h1 class="invoice-id">1/FV/2021</h1>
+                      <div class="date">Data wystawienia: 04.12.2021</div>
+                      <div class="date">Data sprzedaży: 04.12.2021</div>
+                    </div>
+                  </div>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th class="text-left">Nazwa towaru / usługi</th>
+                        <th class="text-right">Cena netto</th>
+                        <th class="text-right">VAT</th>
+                        <th class="text-right">Cena brutto</th>
+                        <th class="text-right">Ilość</th>
+                        <th class="text-right">Wartość brutto</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="no">01</td>
+                        <td class="text-left">
+                          <h3>
+                            <a> Projekt identyfikacji graficznej </a>
+                          </h3>
+                          <a> Opis </a>
+                        </td>
+                        <td class="unit">462,96 zł</td>
+                        <td class="qty">8%</td>
+                        <td class="unit">500,00 zł</td>
+                        <td class="qty">1</td>
+                        <td class="total">500,00 zł</td>
+                      </tr>
+                      <tr>
+                        <td class="no">02</td>
+                        <td class="text-left">
+                          <h3>
+                            <a> Stworzenie strony internetowej </a>
+                          </h3>
+                          <a> Opis </a>
+                        </td>
+                        <td class="unit">703,70 zł</td>
+                        <td class="qty">8%</td>
+                        <td class="unit">760,00 zł</td>
+                        <td class="qty">1</td>
+                        <td class="total">760,00 zł</td>
+                      </tr>
+                      <tr>
+                        <td class="no">03</td>
+                        <td class="text-left">
+                          <h3>
+                            <a> Hosting </a>
+                          </h3>
+                          <a> 1 rok | Termin odnowienia: 04.12.2022 </a>
+                        </td>
+                        <td class="unit">40,65 zł</td>
+                        <td class="qty">23%</td>
+                        <td class="unit">50,00 zł</td>
+                        <td class="qty">1</td>
+                        <td class="total">50,00 zł</td>
+                      </tr>
+                      <tr>
+                        <td class="no">04</td>
+                        <td class="text-left">
+                          <h3>
+                            <a> Domena </a>
+                          </h3>
+                          <a> 1 rok | Termin odnowienia: 04.12.2022 </a>
+                        </td>
+                        <td class="unit">16,26 zł</td>
+                        <td class="qty">23%</td>
+                        <td class="unit">20,00 zł</td>
+                        <td class="qty">2</td>
+                        <td class="total">40,00 zł</td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td colspan="4"></td>
+                        <td colspan="2">WARTOŚĆ NETTO</td>
+                        <td>1269,83 zł</td>
+                      </tr>
+                      <tr>
+                        <td colspan="4"></td>
+                        <td colspan="2">WARTOŚĆ PODATKU</td>
+                        <td>80,17 zł</td>
+                      </tr>
+                      <tr>
+                        <td colspan="4"></td>
+                        <td colspan="2">DO ZAPŁATY</td>
+                        <td>1350,00 zł</td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                  <div class="thanks">Dziękujemy! 💖</div>
+                  <div class="notices">
+                    <div>UWAGI:</div>
+                    <div class="notice">
+                      Za każdy miesiąc opóźnienia w opłaceniu faktury zostaną
+                      naniesione odsetki w wysokości 2%.
+                    </div>
+                  </div>
+                </main>
+                <footer>
+                  Faktura została wygenerowana elektronicznie, podpis nie jest
+                  wymagany. | © MNM-Dev STOVAT ver. 0.1b
+                </footer>
+              </div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

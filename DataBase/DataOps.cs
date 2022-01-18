@@ -13,7 +13,10 @@ using WSB_PO.Invoices;
 
 namespace WSB_PO
 {
-    
+    class DataOps 
+    {
+
+    }    
 }
 
 

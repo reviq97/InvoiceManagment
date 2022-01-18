@@ -15,15 +15,15 @@ namespace WSB_PO.Invoices
             get { return _invoiceId; }
             private set { _invoiceId = value; }
         }
-        private int _recipientId;
+        private uint _hash;
 
-        public int RecipientId
+        public uint Hash
         {
-            get { return _recipientId; }
-            private set { _recipientId = value; }
+            get { return _hash; }
+            private set { _hash = value; }
         }
-        private DateTime dateTime;
-        public DateTime Date
+        private string dateTime;
+        public string Date
         {
             get { return dateTime; }
             private set { dateTime = value; }
@@ -47,14 +47,17 @@ namespace WSB_PO.Invoices
         {
 
         }
-        public Invoice(string invoiceId, int recipientId, DateTime dateTime, List<Product> stuff, Recipient recipient)
+        public Invoice(string invoiceId, uint hash, string dateTime, List<Product> stuff, Recipient recipient)
         {
             InvoiceId = invoiceId;
-            RecipientId = recipientId;
+            this.Hash = hash;
             Date = dateTime;
             Stuff = stuff;
             Recipient = recipient;
         }
-
+        public override string ToString()
+        {
+            return $"InvoiceID: {InvoiceId}, HashID: {Hash}";
+        }
     }
 }

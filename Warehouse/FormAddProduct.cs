@@ -30,22 +30,31 @@ namespace WSB_PO
         
         private void mtb_Netto_Leave(object sender, EventArgs e)
         {
-            string textNetto = Regex.Replace(mtb_Netto.Text, "[^0-9.]", "");
-            string cenaNetto = textNetto.Insert(textNetto.Length - 2, ",");
-            double doubleNetto = Convert.ToDouble(cenaNetto);
-            double tax = Convert.ToDouble(cbx_Tax.Text.Remove(cbx_Tax.Text.Length - 1));
-            
-            double priceWithTax = doubleNetto + (doubleNetto * (tax/100));
-            string priceWithTaxNumsOnly = Regex.Replace(Math.Round(priceWithTax, 2, MidpointRounding.AwayFromZero).ToString("N2"), "[^0-9.]", "");
-            if (priceWithTaxNumsOnly.Length < 6)
+            try
             {
-                int placesToAdd = 6 - priceWithTaxNumsOnly.Length;
-                for (int i = 0; i < placesToAdd; i++)
+                string textNetto = Regex.Replace(mtb_Netto.Text, "[^0-9.]", "");
+                string cenaNetto = textNetto.Insert(textNetto.Length - 2, ",");
+                double doubleNetto = Convert.ToDouble(cenaNetto) ;
+                double tax = Convert.ToDouble(cbx_Tax.Text.Remove(cbx_Tax.Text.Length - 1));
+
+                double priceWithTax = doubleNetto + (doubleNetto * (tax / 100));
+                string priceWithTaxNumsOnly = Regex.Replace(Math.Round(priceWithTax, 2, MidpointRounding.AwayFromZero).ToString("N2"), "[^0-9.]", "");
+                if (priceWithTaxNumsOnly.Length < 6)
                 {
-                    priceWithTaxNumsOnly = priceWithTaxNumsOnly.Insert(0, " ");
+                    int placesToAdd = 6 - priceWithTaxNumsOnly.Length;
+                    for (int i = 0; i < placesToAdd; i++)
+                    {
+                        priceWithTaxNumsOnly = priceWithTaxNumsOnly.Insert(0, " ");
+                    }
                 }
+                mtb_Brutto.Text = priceWithTaxNumsOnly;
             }
-            mtb_Brutto.Text = priceWithTaxNumsOnly;
+            catch (Exception msg)
+            {
+                MessageBox.Show(msg.Message);
+                
+            }
+            
         }
         
         private void mtb_Brutto_Leave(object sender, EventArgs e)
@@ -76,12 +85,16 @@ namespace WSB_PO
                 string name = tbx_Name.Text;
                 string priceNumsOnly = Regex.Replace(mtb_Netto.Text, "[^0-9.]", "");
                 string priceToDoublify = priceNumsOnly.Insert(priceNumsOnly.Length - 2, ",");
-                double price = Convert.ToDouble(priceToDoublify);
-                double tax = Convert.ToDouble(cbx_Tax.Text.Remove(cbx_Tax.Text.Length - 1));
+                
+                decimal tax = Convert.ToDecimal(cbx_Tax.Text.Remove(cbx_Tax.Text.Length - 1));
+                
+                decimal pricedec = (decimal.Parse(priceNumsOnly));
+                string priceDecString = pricedec.ToString().Insert(pricedec.ToString().Length - 2, ",");
+                decimal toDec = decimal.Parse(priceDecString);
                 int quantity = Int32.Parse(tbx_Quantity.Text);
                 string ean = mtb_EAN.Text;
                 string unit = tbx_Unit.Text;
-                db.InsertQuery(name, price, tax, quantity, ean, unit);
+                db.InsertQuery(name, toDec, tax, quantity, ean, unit);
                 this.Dispose();
 
             }

@@ -30,8 +30,10 @@ namespace WSB_PO
         private void pictureWarehouse_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FormStorage fs = new FormStorage();
-            fs.ShowDialog();
+            using (FormStorage fs = new FormStorage())
+            {
+                fs.ShowDialog();
+            }
         }
 
         private void pictureExchange_Click(object sender, EventArgs e)

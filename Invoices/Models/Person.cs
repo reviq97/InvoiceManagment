@@ -8,6 +8,14 @@ namespace WSB_PO.Invoices.Models
 {
     public partial class Person
     {
+        private string _cityPerson;
+
+        public string CityPerson
+        {
+            get { return _cityPerson; }
+            private set { _cityPerson = value; }
+        }
+
         private string _nameAndSur;
 
         public string NameAndSur
@@ -44,7 +52,10 @@ namespace WSB_PO.Invoices.Models
             private set { _discount = value; }
         }
 
-
+        public Person(string name)
+        {
+            NameAndSur = name;
+        }
         public Person(string nameAndSurname, string phone, string mail, string category, string discount)
         {
             NameAndSur = nameAndSurname;
@@ -52,6 +63,11 @@ namespace WSB_PO.Invoices.Models
             Mail = mail;
             Category = category;
             Discount = discount;
+            
+        }
+        public Person()
+        {
+
         }
     }
 }
